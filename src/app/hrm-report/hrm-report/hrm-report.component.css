@@ -1,0 +1,28 @@
+.block{
+    border-top:1px solid #cbcbcb;
+    border-left:1px solid #cbcbcb;
+    border-bottom:1px solid #cbcbcb;
+}
+.title{
+ color: rgb(0, 162, 255);
+ margin-top:0.3rem;
+}
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 14px solid #555;
+}
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 50px solid #555;
+}
+.block2{
+    border-top:1px solid #cbcbcb;
+    border-left:1px solid #cbcbcb;
+    border-bottom:1px solid #cbcbcb;
+}

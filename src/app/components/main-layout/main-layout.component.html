@@ -6,15 +6,6 @@
                 <img src="./../../../assets/Capture2.PNG" alt="" class="fr">
             </div>
             <div class="row">
-                <!-- <nav mat-tab-nav-bar>
-                    <a mat-tab-link
-                    *ngFor="let link of navLinks"
-                    [routerLink]="link.link"
-                    routerLinkActive #rla="routerLinkActive"
-                    [active]="rla.isActive">
-                    {{link.label}}
-                    </a>
-                </nav> -->
                 <nav class="flex ml4 mb2">
                             <button routerLink="" routerLinkActive="active">Nhân sự</button>
                             <button routerLink="/account" routerLinkActive="active">Doanh thu</button>
@@ -34,11 +25,13 @@
                             <label for="years">Năm</label>
                             <select id="years">
                                 <option *ngFor="let year of years" label={{year}} value={{year}}>{{year}}</option>
+                                <option value="">All..</option>
                             </select>
                         </div>
                         <div class="block">
                             <label for="months">Tháng</label>
                             <select id="months">
+                                <option value="">All..</option>
                                 <option *ngFor="let month of months" label={{month}} value={{month}}>{{month}}</option>  
                             </select>
                         </div>
@@ -48,14 +41,14 @@
                         <div class="block">
                             <label for="branchs">Chi nhánh</label>
                             <select id="branches">
-                                <option label="2019" value="2019">2019</option>
+                                <option value="">All..</option>
+                                <option *ngFor="let branch of branches" value={{branch}} label={{branch}}>{{branch}}</option>
                             </select>
                         </div>
                         <div class="block">
                             <label for="office">Phòng ban</label>
                             <select id="office">
-                                <option label="2018" value="2018">2018</option>
-                                <option label="2019" value="2019">2019</option>
+                               <option *ngFor="let office of offices" value={{office}} label={{office}}>{{office}}</option>
                             </select>
                         </div>
                     </div>
@@ -63,15 +56,15 @@
                         <div class="block">
                             <label for="shops">Cửa hàng</label>
                             <select id="shops">
-                              <option label="2018" value="2018">2018</option>
-                                <option label="2019" value="2019">2019</option>
+                                <option value="">All..</option>
+                                <option *ngFor="let shop of shops" value={{shop}}>{{shop}}</option>
                             </select>
                         </div>
                         <div class="block">
                             <label for="idHrm">Mã nhân viên</label>
                             <select id="idHrm">
-                                <option label="2018" value="2018">2018</option>
-                                <option label="2019" value="2019">2019</option>
+                                <option value="">All..</option>
+                                <option *ngFor="let hrmId of hrmIds" label={{hrmId}} value={{hrmId}}>{{hrmId}}</option>
                             </select>
                         </div>
                     </div>
@@ -81,16 +74,15 @@
                 <div class="block">
                     <label for="types">Hạng mục</label>
                     <select id="types">
-                        <option label="2018" value="2018">2018</option>
-                        <option label="2019" value="2019">2019</option>
+                        <option *ngFor="let type of types" value={{type}} label={{type}} >{{type}}</option>
                     </select>
                 </div>
                 <div class="block">
                     <div class="btn btn-success">Lấy dữ liệu</div>
                 </div>
             </div>
-            
         </div>
 </section>
+<h3>Bảng báo cáo nhân sự</h3>
 <router-outlet></router-outlet>
 <footer></footer>

@@ -1,5 +1,5 @@
 import { Component, NgModule,OnInit } from '@angular/core';
-import { multi } from '../dataFromApi';
+import { multi } from './../../service/dataFromApi/dataFromApi';
 @Component({
   selector: 'app-stacked-area-chart',
   templateUrl: './stacked-area-chart.component.html',
