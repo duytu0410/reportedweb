@@ -1,5 +1,5 @@
 import { Component, NgModule,OnInit } from '@angular/core';
-import { multi } from './../../service/dataFromApi/dataFromApi';
+import { stacked_chart } from './../../service/dataFromApi/dataFromApi';
 @Component({
   selector: 'app-stacked-area-chart',
   templateUrl: './stacked-area-chart.component.html',
@@ -7,7 +7,7 @@ import { multi } from './../../service/dataFromApi/dataFromApi';
 })
 export class StackedAreaChartComponent implements OnInit {
   multi: any[];
-  view: any[] = [230,145];
+  view: any[] = [300,145];
 
   // options
   legend: boolean = false;
@@ -23,11 +23,12 @@ export class StackedAreaChartComponent implements OnInit {
   trimYAxisTicks:boolean=true;
   maxYAxisTickLength:number=5;
   showGridLines:boolean=false;
+  tooltipDisabled:boolean=true;
   colorScheme = {
     domain: ['#f5f5f5', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
   constructor() {
-    this.multi=multi
+    this.multi=stacked_chart
    }
 
   ngOnInit(): void {

@@ -2,6 +2,13 @@
     border-top:1px solid #cbcbcb;
     border-left:1px solid #cbcbcb;
     border-bottom:1px solid #cbcbcb;
+    position: relative;
+}
+.stacked-chart{
+    top:2rem;
+    left:1rem;
+    position:absolute;
+    z-index: -1;
 }
 .title{
  color: rgb(0, 162, 255);

@@ -1,28 +1,29 @@
-import { Component, OnInit,Input } from '@angular/core';
-import {single,multi} from './../../service/dataFromApi/dataFromApi'
+import { Component, OnInit,Input,ViewEncapsulation } from '@angular/core';
+import {single,multi} from './../../service/dataFromApi/dataFromApi';
+
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.css']
+  styleUrls: ['./pie-chart.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PieChartComponent implements OnInit {
 
   single: any[];
   multi: any[];
-  view: any[] = [300, 200];
+  view: any[] = [350, 200];
 
   // options
-  showLegend = false;
-
+  showLegend = true;
+  explodeSlices=false;
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#f68979', '#fcbeb1', '#bedfb1', '#be4060','#e4d4c5','61a06d','#cfdfc6']
   };
 
   // pie
   showLabels = false;
-  explodeSlices = false;
   doughnut = false;
-
+  gradient: boolean = true;
   constructor() {
     Object.assign(this, {single, multi})   
   }

@@ -1,0 +1,9 @@
+.ngx-charts-outer {
+    width: 100% !important;
+}
+
+/* Sets the legend width to auto expand to fit labels, but caps at 200px */
+.chart-legend > div {
+    width: auto !important;
+    max-width: 200px;
+}
