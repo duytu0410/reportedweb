@@ -1,34 +1,35 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {filter} from './../../service/filter_types/fiter_types_const';
-import { FormBuilder, FormGroup,FormControl } from '@angular/forms';
+import {FormBuilder,FormGroup,Validators} from '@angular/forms'
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.css']
 })
 export class MainLayoutComponent implements OnInit {
-  filterForm:FormGroup
-  public years;
-  public months;
-  public branches;
-  public offices;
-  public shops;
-  public hrmIds;
-  public types;
+  filterForm;
+  public filter;
   constructor(private router: Router,
-     private formBuilder: FormBuilder,) {
-    this.years=filter.years;
-    this.months=filter.months;
-    this.branches=filter.branches;
-    this.offices=filter.offices;
-    this.shops=filter.shops;
-    this.hrmIds=filter.hrmIds;
-    this.types=filter.types;
+    private formBuilder: FormBuilder,) {
+      this.filterForm = this.formBuilder.group({
+        year: ['', Validators.required],
+        month: ['', Validators.required],
+        branch:['', Validators.required],
+        office:['Ban Giám Đốc', Validators.required],
+        shop:['', Validators.required],
+        hrmId:['', Validators.required],
+        type:['Tổng thu nhập', Validators.required],
+      });
+    this.filter=filter;
   }
-
+ 
+onSubmit(data){
+  console.log(data)
+  // this.filterForm.reset();
+}
 ngOnInit(): void {
-//  this.filterForm=this.formBuilder.group
+
 }
 
 }

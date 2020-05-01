@@ -3,6 +3,9 @@ header{
     height:3rem;
     background: #2d4b65;
 }
+.block{
+    margin-left: 1rem;
+}
 h3{
     color:rgb(0, 162, 255);
 }
