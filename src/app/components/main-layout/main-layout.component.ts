@@ -1,13 +1,14 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {filter} from './../../service/filter_types/fiter_types_const'
+import {filter} from './../../service/filter_types/fiter_types_const';
+import { FormBuilder, FormGroup,FormControl } from '@angular/forms';
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.css']
 })
 export class MainLayoutComponent implements OnInit {
-
+  filterForm:FormGroup
   public years;
   public months;
   public branches;
@@ -15,7 +16,8 @@ export class MainLayoutComponent implements OnInit {
   public shops;
   public hrmIds;
   public types;
-  constructor(private router: Router) {
+  constructor(private router: Router,
+     private formBuilder: FormBuilder,) {
     this.years=filter.years;
     this.months=filter.months;
     this.branches=filter.branches;
@@ -26,7 +28,7 @@ export class MainLayoutComponent implements OnInit {
   }
 
 ngOnInit(): void {
- 
+//  this.filterForm=this.formBuilder.group
 }
 
 }

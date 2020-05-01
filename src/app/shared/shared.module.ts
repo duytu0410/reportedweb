@@ -8,7 +8,9 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
 import { GroupedBarChartComponent } from './grouped-bar-chart/grouped-bar-chart.component';
-import { ComboChartComponent, ComboSeriesVerticalComponent } from './combo-chart';
+import { ComboChartComponent, ComboSeriesVerticalComponent } from './combo-line-bar-chart/combo-chart';
+import { ComboLineBarChartComponent } from './combo-line-bar-chart/combo-line-bar-chart/combo-line-bar-chart.component';
+
 @NgModule({
   declarations: [
     StackedAreaChartComponent,
@@ -19,11 +21,13 @@ import { ComboChartComponent, ComboSeriesVerticalComponent } from './combo-chart
     BubbleChartComponent,
     GroupedBarChartComponent,
     ComboChartComponent, 
-    ComboSeriesVerticalComponent,
+    ComboSeriesVerticalComponent, ComboLineBarChartComponent,
+    
+ 
   ],
   imports: [
     CommonModule,
-    NgxChartsModule
+    NgxChartsModule,
   ],
   exports:[
     StackedAreaChartComponent,
@@ -32,7 +36,8 @@ import { ComboChartComponent, ComboSeriesVerticalComponent } from './combo-chart
     BarChartComponent,
     LineChartComponent,
     BubbleChartComponent,
-    GroupedBarChartComponent
+    GroupedBarChartComponent,
+    ComboLineBarChartComponent
   ]
 })
 export class SharedModule { }
