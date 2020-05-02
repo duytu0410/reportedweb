@@ -1,7 +1,7 @@
 export const ReportedApi={
     protocol_http : "http",
     protocol_https : "https",
-    DOMAIN : "aggregatedrevenue20200331042045.azurewebsites.net",
+    DOMAIN : "aggregatedrevenue20200501042702.azurewebsites.net",
     AUTHORIZATION : "Authorization",
     CONTENT_TYPE:"Content-Type",
     API:{

@@ -22,7 +22,7 @@
                 <div class="block" *ngFor="let item of filter">
                     <label for={{item.labels}}>{{item.labels}}</label>
                     <select id={{item.labels}} formControlName={{item.formControlName}} required >
-                        <option *ngFor="let i of item.value" [ngValue]="i">{{i}}</option>
+                        <option *ngFor="let i of item.view" [ngValue]="i">{{i}}</option>
                         <option selected="selected" value="">All..</option>
                     </select>
                 </div>

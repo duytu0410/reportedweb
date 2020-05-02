@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {lineChartSeries,barChart} from './../../../service/dataFromApi/dataFromApi'
+import {lineChartSeries,barChart} from '../../../service/const/dataFromApi'
 @Component({
   selector: 'app-combo-line-bar-chart',
   templateUrl: './combo-line-bar-chart.component.html',

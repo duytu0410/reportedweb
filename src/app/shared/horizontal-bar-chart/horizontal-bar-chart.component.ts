@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {single, multi} from '../../service/dataFromApi/dataFromApi';
+import {single, multi} from '../../service/const/dataFromApi';
 @Component({
   selector: 'app-horizontal-bar-chart',
   templateUrl: './horizontal-bar-chart.component.html',

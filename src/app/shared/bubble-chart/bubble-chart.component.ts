@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {bubbleData} from './../../service/dataFromApi/dataFromApi'
+import {bubbleData} from '../../service/const/dataFromApi'
 @Component({
   selector: 'app-bubble-chart',
   templateUrl: './bubble-chart.component.html',

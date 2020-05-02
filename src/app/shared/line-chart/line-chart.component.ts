@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {multi} from './../../service/dataFromApi/dataFromApi'
+import {multi} from '../../service/const/dataFromApi'
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
