@@ -106,57 +106,7 @@ export var stacked_chart=[
       },
      
     ]
-  },
-  {
-    "name": "VietNam",
-    "series": [
-      {
-        "name": "2010",
-        "value": 1234545
-      },
-      {
-        "name": "2011",
-        "value": 3452533
-      },
-      {
-        "name": "2012",
-        "value": 45656446
-      },
-      {
-        "name": "2013",
-        "value": 24353636
-      },
-      {
-        "name": "2014",
-        "value": 6000300
-      },
-      {
-        "name": "2015",
-        "value": 234534
-      },
-      {
-        "name": "2016",
-        "value": 2456453
-      },
-      {
-        "name": "2017",
-        "value": 68978789
-      },
-      {
-        "name": "2018",
-        "value": 7345355
-      },
-      {
-        "name": "2019",
-        "value": 9898909
-      },
-      {
-        "name": "2020",
-        "value": 4677474
-      },
-     
-    ]
-  },
+  }
 ]
 export var bubbleData =  [
   {
