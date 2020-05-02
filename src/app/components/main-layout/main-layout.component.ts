@@ -25,7 +25,10 @@ export class MainLayoutComponent implements OnInit {
   }
  
 onSubmit(data){
-  console.log(data)
+  if(data){
+    sessionStorage.setItem('filterInfo', JSON.stringify(data));
+    console.log(data)
+  }
   // this.filterForm.reset();
 }
 ngOnInit(): void {

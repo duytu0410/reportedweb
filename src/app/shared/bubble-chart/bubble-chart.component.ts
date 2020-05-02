@@ -12,7 +12,7 @@ export class BubbleChartComponent implements OnInit {
   // options
   showXAxis: boolean = true;
   showYAxis: boolean = true;
-  gradient: boolean = false;
+  gradient: boolean = true;
   showLegend: boolean = false;
   showXAxisLabel: boolean = false;
   yAxisLabel: string = 'Population';

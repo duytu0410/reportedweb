@@ -15,17 +15,18 @@ export class StackedAreaChartComponent implements OnInit {
   animations: boolean = false;
   xAxis: boolean = false;
   yAxis: boolean = false;
+  gradient:boolean = false;
   showYAxisLabel: boolean = false;
   showXAxisLabel: boolean = false;
   xAxisLabel: string = 'Year';
   yAxisLabel: string = 'Population';
   timeline: boolean = false;
   trimYAxisTicks:boolean=true;
-  maxYAxisTickLength:number=5;
-  showGridLines:boolean=false;
-  tooltipDisabled:boolean=true;
+  maxYAxisTickLength:number=16;
+  showGridLines:boolean=true;
+  tooltipDisabled:boolean=false;
   colorScheme = {
-    domain: ['#f5f5f5', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#cbcbcb', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
   constructor() {
     this.multi=stacked_chart

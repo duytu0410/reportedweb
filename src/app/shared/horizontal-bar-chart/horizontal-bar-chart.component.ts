@@ -14,13 +14,12 @@ export class HorizontalBarChartComponent implements OnInit {
   // options
   showXAxis = true;
   showYAxis = true;
-  gradient = false;
+  gradient = true;
   showLegend = false;
   showXAxisLabel = false;
   xAxisLabel = 'Country';
   showYAxisLabel = false;
   yAxisLabel = 'Population';
-
   colorScheme = {
     domain: ['#a5cca7','#deeaea', '#cde2ef','#90b39d','#d9889b','#f7dcd3', '#bdd6e8','#c3e6bc','#d6879b','#fdcec5','#7f9bb5']
   };

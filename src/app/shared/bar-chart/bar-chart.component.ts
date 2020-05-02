@@ -14,7 +14,7 @@ export class BarChartComponent implements OnInit {
   // options
   showXAxis = true;
   showYAxis = true;
-  gradient = false;
+  gradient = true;
   showLegend = false;
   showXAxisLabel = false;
   xAxisLabel = 'Country';
