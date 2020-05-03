@@ -12,12 +12,20 @@ export class ApiService {
   constructor( private _http: HttpClient) { }
   private ROOT = `${ReportedApi.protocol_https}://${ReportedApi.DOMAIN}`;
   //HR
+  // GET SUM WITH CATEGORIES (DASH 1,2)
   getSumWithCategories(filter,onFinish){
     this._http.post(`${this.ROOT}${ReportedApi.API.GET_SUM_WITH_CATEGORIES}`, filter).subscribe(
       (data) => { this.execIfSuccess(data, onFinish) },
       (err) => { this.execIfError(err, onFinish) }
     )
-
+  
+  }
+  //GET COUNTED HR IN MONTH
+  getCountedHrInMonth(filter,onFinish){
+    this._http.post(`${this.ROOT}${ReportedApi.API.GET_COUNTED_HR_IN_MONTH}`, filter).subscribe(
+      (data) => { this.execIfSuccess(data, onFinish) },
+      (err) => { this.execIfError(err, onFinish) }
+    )
   }
     // =============================
   // Call back if success

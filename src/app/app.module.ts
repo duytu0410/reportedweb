@@ -6,6 +6,7 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {HrmReportComponent} from './hrm-report/components/hrm-report/hrm-report.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [HrmReportComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
