@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input} from '@angular/core';
 import {single, multi} from '../../service/const/dataFromApi';
+import {Subscription} from 'rxjs';
+import {BindingDataToRouterService} from './../../service/binding_data_to_router/binding-data-to-router.service';
+
 @Component({
   selector: 'app-horizontal-bar-chart',
   templateUrl: './horizontal-bar-chart.component.html',
   styleUrls: ['./horizontal-bar-chart.component.css']
 })
 export class HorizontalBarChartComponent implements OnInit {
+  @Input() receivedData
+  private messageSubscription: Subscription;
   single: any[];
   multi: any[];
 
@@ -24,13 +29,16 @@ export class HorizontalBarChartComponent implements OnInit {
     domain: ['#a5cca7','#deeaea', '#cde2ef','#90b39d','#d9889b','#f7dcd3', '#bdd6e8','#c3e6bc','#d6879b','#fdcec5','#7f9bb5']
   };
 
-  constructor() {
+  constructor(public bindingData:BindingDataToRouterService) {
     Object.assign(this, {single, multi})   
+    
   }
-  ngOnInit(){}
+  ngOnInit(){
+    
+  }
   onSelect(event) {
     console.log(event);
   }
+ 
   
-
 }

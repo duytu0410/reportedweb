@@ -37,44 +37,14 @@ onSubmit(data){
     //chuyển dữ liệu từ có dấu sang hợp với database
     for (let i = 0; i < this.filter.length; i++) {
       for (let j = 0; j< this.filter[i].view.length; j++) {
-        if(data.chinhanh==this.filter[i].view[j]){
-          data.chinhanh=this.filter[i].value[j]
-        }
-        if(data.phongban==this.filter[i].view[j]){
-          data.phongban=this.filter[i].value[j]
-        }
-        if(data.cuahang==this.filter[i].view[j]){
-          data.cuahang=this.filter[i].value[j]
-        }
         if(data.hangmuc==this.filter[i].view[j]){
           data.hangmuc=this.filter[i].value[j]
         }
       }
     }
+    console.log(data)
     this.bindingDataToRouterService.bridge=data
     this.bindingDataToRouterService.buttonClicked(true);
-    // let nam=data.nam;
-    // let nam2=data.nam-1;
-    // let thang=data.thang;
-    // let chinhanh=data.chinhanh;
-    // let phongban=data.phongban;
-    // let cuahang=data.cuahang;
-    // let hangmuc=data.hangmuc;
-    // let manv=data.manv;
-    // this.apiService.getSumWithCategories({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status1,dataFromApi)=>{
-    //           if(status1){
-    //            this.getsumwithcategoriesnow=dataFromApi
-    //            console.log(this.getsumwithcategoriesnow)
-    //           }
-    //         })
-    // nam=data.nam-1
-    // console.log({nam,chinhanh,phongban,cuahang,manv,hangmuc})
-    // this.apiService.getSumWithCategories({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,dataFromApi)=>{
-    //            if(status){
-    //             this.getsumwithcategoriespast=dataFromApi
-    //             console.log(this.getsumwithcategoriespast)
-    //             }
-    //         })
     this.bindingDataToRouterService.sendData(data);
   }
   // this.filterForm.reset();

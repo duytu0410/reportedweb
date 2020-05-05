@@ -2,15 +2,53 @@
 export var single = [
   {
     "name": "Germany",
-    "value": 8940000
+    "value": 0
   },
   {
     "name": "USA",
-    "value": 5000000
+    "value": 0
   },
   {
     "name": "France",
-    "value": 7200000
+    "value": 0
+  },
+  {
+    "name": "Vietnam",
+    "value": 0
+  }
+  
+];
+export var single2 = [
+  {
+    "name": "Germany",
+    "value": 0
+  },
+  {
+    "name": "USA",
+    "value": 0
+  },
+  {
+    "name": "France",
+    "value": 0
+  },
+  
+];
+export var single3 = [
+  {
+    "name": "Germany",
+    "value": 0
+  },
+  {
+    "name": "USA",
+    "value": 0
+  },
+  {
+    "name": "France",
+    "value": 0
+  },
+  {
+    "name": "Vietnam",
+    "value": 0
   }
 ];
 

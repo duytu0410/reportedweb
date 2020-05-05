@@ -8,7 +8,7 @@ import {single,multi} from '../../service/const/dataFromApi';
   encapsulation: ViewEncapsulation.None
 })
 export class PieChartComponent implements OnInit {
-
+  @Input() receivedData
   single: any[];
   multi: any[];
   view: any[] = [350, 200];
