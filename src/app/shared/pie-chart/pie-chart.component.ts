@@ -19,7 +19,6 @@ export class PieChartComponent implements OnInit {
   colorScheme = {
     domain: ['#f68979', '#fcbeb1', '#bedfb1', '#be4060','#e4d4c5','61a06d','#cfdfc6']
   };
-
   // pie
   showLabels = false;
   doughnut = false;

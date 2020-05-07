@@ -35,7 +35,9 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public getpercentofeachpb;
   public sum=0
   //dash7
-  public getaverage=single2
+  public getsumwithcategoriesinpbwithcuahang;
+  public getcountedallhrineachpb;
+  public getaverage
   constructor(
     public bindingData:BindingDataToRouterService,
     public apiService:ApiService,
@@ -72,10 +74,9 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         this.getsumwithmonthpast=0;
         this.getcountedhrminmonthnow=0;
         this.getcountedhrminmonthpast=0;
+         //dash1,2
           this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
             if(status){
-              this.stackedAreaChart=data
-              this.stackedAreaChart=[...this.stackedAreaChart]
               for (let i = 0; i < data.length; i++) {
                 //get sum with categories this year
                 this.getsumwithcategoriesnow+=data[i].value
@@ -86,7 +87,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               }
             }
           }) 
-          this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
+          this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang,hangmuc},(status,data)=>{
             if(status){
               for (let i = 0; i < data.length; i++) {
                 if(data[i].name=thang){
@@ -95,6 +96,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               }
             }
           }) 
+          //dash 4
           this.apiService.getCountedAllNewHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
             if(status){
               for (let i = 0; i < data.length; i++) {
@@ -104,6 +106,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               }
             }
           }) 
+          //dash 4
           this.apiService.getCountedAllQuitedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
             if(status){
               for (let i = 0; i < data.length; i++) {
@@ -113,25 +116,49 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               }
             }
           }) 
-          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,cuahang,hangmuc},(status,data)=>{
+          //dash5
+          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
               this.sum=0;
               data.forEach(e => {
                 this.sum+=e.value;
               });
               this.getsumwithcategoriesinpb=data  
-            
             }
           }) 
-          
-          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,cuahang,hangmuc},(status,data)=>{
+          //dash6
+          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
               for (let i = 0; i <data.length; i++) {
-                data[i].value=this.hrmReportService.handlePercent(this.sum,data[i].value);
+                if(this.sum){
+                  data[i].value=this.hrmReportService.handlePercent(this.sum,data[i].value);
+                }
               }
               this.getpercentofeachpb=data
             }
           }) 
+          //dash 7
+          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc,cuahang},(status,data)=>{
+            if(status){
+                this.getsumwithcategoriesinpbwithcuahang=data
+            }
+          }) 
+          this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc,cuahang},(status,data)=>{
+            if(status){
+              for (let i = 0; i < data.length; i++) {
+                if(this.getsumwithcategoriesinpbwithcuahang&&data[i].value&&this.getsumwithcategoriesinpbwithcuahang[i].value){
+                  data[i].value=this.getsumwithcategoriesinpbwithcuahang[i].value/data[i].value
+                }
+              }
+              this.getaverage=data
+            }
+          })
+         //dash 8
+         this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
+           if(status){
+             console.log(data)
+           }
+         })
 
         nam--
 
