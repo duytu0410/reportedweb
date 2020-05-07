@@ -7,4 +7,10 @@
       [labels]="showLabels"
       [doughnut]="doughnut"
       (select)="onSelect($event)">
+      <ng-template #tooltipTemplate let-model="model">
+            <h5>
+              {{model.name}}
+            </h5>
+            <h5>{{model.value}}%</h5>
+          </ng-template>
 </ngx-charts-pie-chart>

@@ -10,6 +10,7 @@ import {HrmReportService} from './../../service/hrm-report.service'
   styleUrls: ['./hrm-report.component.css']
 })
 export class HrmReportComponent implements OnInit,OnDestroy {
+  
   public subscription:Subscription;
   private messageSubscription: Subscription;
   public body;
@@ -18,6 +19,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   //dash1
   public getsumwithcategoriesnow:number=0;
   public getsumwithcategoriespast:number=0;
+  public stackedAreaChart
   //dash2
   public getsumwithmonthnow:number=0;
   public getsumwithmonthpast:number=0;
@@ -28,9 +30,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public getcountedallnewhr:number=0;
   public getcountedallquitedhr:number=0;
   //dash5
-  public getsumwithcategoriesinpb=single;
+  public getsumwithcategoriesinpb;
   //dash6
-  public getpercentofeachpb=single3
+  public getpercentofeachpb;
+  public sum=0
   //dash7
   public getaverage=single2
   constructor(
@@ -69,96 +72,90 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         this.getsumwithmonthpast=0;
         this.getcountedhrminmonthnow=0;
         this.getcountedhrminmonthpast=0;
-          this.apiService.getSumWithCategories({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,dataFromApi)=>{
+          this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
             if(status){
-              this.getsumwithcategoriesnow+=dataFromApi
-            }
-          }) 
-           //get sum with categories add month this year
-        
-          this.apiService.getSumWithCategoriesInAMonth({nam,thang,chinhanh,phongban,cuahang,manv,hangmuc},(status,dataFromApi)=>{
-            if(status){
-            this.getsumwithmonthnow+=dataFromApi;
-            }
-          })
-
-       
-        //get counted hrm in month this year
-        this.apiService.getCountedHrInMonth({nam,thang,chinhanh,phongban,cuahang},(status,data)=>{
-          if(status){
-            this.getcountedhrminmonthnow=data
-          }
-        })
-        //get all new hr this year
-        this.apiService.getCountedAllNewHr({nam,thang,chinhanh,phongban,cuahang},(status,data)=>{
-          if(status){
-            this.getcountedallnewhr=data
-          }
-        })
-        //get all quited hr this year
-        this.apiService.getCountedAllQuitedHr({nam,thang,chinhanh,phongban,cuahang},(status,data)=>{
-          if(status){
-            this.getcountedallquitedhr=data
-          }
-        })
-        //get sum with categories in phong ban this year and 
-        this.apiService.getSumWithCategoriesInPhongBan({nam,thang,chinhanh,hangmuc},(status,data)=>{
-          if(status){
-            
-            for (let index = 0; index < data.length; index++) {
-              this.getsumwithcategoriesinpb[index].name=data[index].title;
-              this.getsumwithcategoriesinpb[index].value=data[index].tong;
-            }
-            this.getsumwithcategoriesinpb=[...this.getsumwithcategoriesinpb]
-          }
-        })
-        //get percent of each pb
-        this.apiService.getSumWithCategoriesInPhongBan({nam,thang,chinhanh,hangmuc},(status,data)=>{
-          if(status){
-            let sum=0;
-            data.forEach(element => {
-              sum+=element.tong
-            });
-            for (let i = 0; i < data.length; i++) {
-              this.getpercentofeachpb[i].name=data[i].title;
-              this.getpercentofeachpb[i].value=this.hrmReportService.handlePercent(sum,data[i].tong)
-            }
-              this.getpercentofeachpb=[...this.getpercentofeachpb]
-          }
-        })
-        //get average for each phong ban(dash7)
-          this.apiService.getAverageInPhongBan({nam,thang,cuahang,chinhanh,hangmuc},(status,data)=>{
-            if(status){
-              for (let index = 0; index < data.length; index++) {
-                for (let j = 0; j < this.getsumwithcategoriesinpb.length; j++) {
-                  if(data[index].title==this.getsumwithcategoriesinpb[j].name){
-                    this.getaverage[index].name=data[index].title;
-                    this.getaverage[index].value=this.getsumwithcategoriesinpb[j].value/data[index].tong;
-                  }
+              this.stackedAreaChart=data
+              this.stackedAreaChart=[...this.stackedAreaChart]
+              for (let i = 0; i < data.length; i++) {
+                //get sum with categories this year
+                this.getsumwithcategoriesnow+=data[i].value
+                  //get sum with categories add month this year
+                if(data[i].name==thang){
+                  this.getsumwithmonthnow=data[i].value
                 }
               }
-              this.getaverage=[...this.getaverage]
             }
-          })
+          }) 
+          this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
+            if(status){
+              for (let i = 0; i < data.length; i++) {
+                if(data[i].name=thang){
+                  this.getcountedhrminmonthnow=data[i].value
+                }
+              }
+            }
+          }) 
+          this.apiService.getCountedAllNewHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
+            if(status){
+              for (let i = 0; i < data.length; i++) {
+                if(data[i].name=thang){
+                  this.getcountedallnewhr=data[i].value
+                }
+              }
+            }
+          }) 
+          this.apiService.getCountedAllQuitedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
+            if(status){
+              for (let i = 0; i < data.length; i++) {
+                if(data[i].name=thang){
+                  this.getcountedallquitedhr=data[i].value
+                }
+              }
+            }
+          }) 
+          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,cuahang,hangmuc},(status,data)=>{
+            if(status){
+              this.sum=0;
+              data.forEach(e => {
+                this.sum+=e.value;
+              });
+              this.getsumwithcategoriesinpb=data  
+            
+            }
+          }) 
+          
+          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,cuahang,hangmuc},(status,data)=>{
+            if(status){
+              for (let i = 0; i <data.length; i++) {
+                data[i].value=this.hrmReportService.handlePercent(this.sum,data[i].value);
+              }
+              this.getpercentofeachpb=data
+            }
+          }) 
+
         nam--
+
+
         //and last year
-        this.apiService.getSumWithCategories({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,dataFromApi)=>{
+        this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
           if(status){
-            this.getsumwithcategoriespast+=dataFromApi
+            for (let i = 0; i < data.length; i++) {
+              this.getsumwithcategoriespast+=data[i].value
+              if(data[i].name==thang){
+                this.getsumwithmonthpast=data[i].value
+              }
+            }
           }
         }) 
-          //and last year add month
-          this.apiService.getSumWithCategoriesInAMonth({nam,thang,chinhanh,phongban,cuahang,manv,hangmuc},(status,dataFromApi)=>{
-            if(status){
-             this.getsumwithmonthpast+=dataFromApi
+        this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
+          if(status){
+            for (let i = 0; i < data.length; i++) {
+              if(data[i].name=thang){
+                this.getcountedhrminmonthpast=data[i].value
+              }
             }
-          })
-           //get counted hrm in month last year
-           this.apiService.getCountedHrInMonth({nam,thang,chinhanh,phongban,cuahang},(status,data)=>{
-            if(status){
-              this.getcountedhrminmonthpast=data
-            }
-          })
+          }
+        }) 
       }
   });
   }

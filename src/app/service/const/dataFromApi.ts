@@ -45,10 +45,6 @@ export var single3 = [
   {
     "name": "France",
     "value": 0
-  },
-  {
-    "name": "Vietnam",
-    "value": 0
   }
 ];
 

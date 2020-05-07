@@ -1,4 +1,4 @@
-import { Component, NgModule,OnInit } from '@angular/core';
+import { Component, NgModule,OnInit,Input } from '@angular/core';
 import { stacked_chart } from '../../service/const/dataFromApi';
 @Component({
   selector: 'app-stacked-area-chart',
@@ -6,6 +6,7 @@ import { stacked_chart } from '../../service/const/dataFromApi';
   styleUrls: ['./stacked-area-chart.component.css']
 })
 export class StackedAreaChartComponent implements OnInit {
+  @Input() receivedData
   multi: any[];
   view: any[] = [300,145];
 
@@ -33,6 +34,7 @@ export class StackedAreaChartComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log(this.receivedData)
   }
     
   

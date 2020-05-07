@@ -25,10 +25,10 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .now h5{
-    color: #E44D25;
+    color: rgb(2, 2, 2);
 }
 .past h5{
-    color: #E44D25;
+    color: rgb(2, 2, 2);
 }
 .stacked-chart{
     top:3.2rem;
