@@ -26,11 +26,11 @@ export var multi = [
     "series": [
       {
         "name": "2010",
-        "value": 7300000
+        "value": 0
       },
       {
         "name": "2011",
-        "value": 8940000
+        "value":0
       }
     ]
   },
@@ -40,11 +40,11 @@ export var multi = [
     "series": [
       {
         "name": "2010",
-        "value": 7870000
+        "value": 0
       },
       {
         "name": "2011",
-        "value": 8270000
+        "value": 0
       }
     ]
   },
@@ -54,11 +54,11 @@ export var multi = [
     "series": [
       {
         "name": "2010",
-        "value": 5000002
+        "value": 0
       },
       {
         "name": "2011",
-        "value": 5800000
+        "value": 0
       }
     ]
   }
@@ -69,7 +69,7 @@ export var stacked_chart=[
     "series": [
       {
         "name": "2010",
-        "value": 7300000
+        "value": 0
       },
       {
         "name": "2011",

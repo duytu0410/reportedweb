@@ -2,7 +2,7 @@
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block ">
             <app-stacked-area-chart class="stacked-chart" [receivedData]="stackedAreaChart" ></app-stacked-area-chart>
             <div class="different">
-                <div class="title">{{hangmuc}} năm {{nam}} và {{nam-1}}</div>
+                <div class="title">{{title}} năm {{nam}} và {{nam-1}}</div>
                 <div class="level flex flex-wrap w-100 justify-center">
                     <h3 class="triangle-up pt1" *ngIf="getsumwithcategoriesnow-getsumwithcategoriespast>0"></h3>
                     <h3 class="triangle-down pt1" *ngIf="getsumwithcategoriespast-getsumwithcategoriesnow>0"></h3>
@@ -31,7 +31,7 @@
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block ">
             <app-stacked-area-chart class="stacked-chart" [receivedData]="stackedAreaChart"></app-stacked-area-chart>
             <div class="different">
-                <div class="title">{{hangmuc}} tháng {{thang}} năm {{nam}} và năm {{nam-1}}</div>
+                <div class="title">{{title}} tháng {{thang}} năm {{nam}} và năm {{nam-1}}</div>
                 <div class="level flex flex-wrap w-100 justify-center">
                     <h3 class="triangle-up pt1" *ngIf="getsumwithmonthnow-getsumwithmonthpast>0"></h3>
                     <h3 class="triangle-down pt1" *ngIf="getsumwithmonthpast-getsumwithmonthnow>0"></h3>
@@ -100,29 +100,29 @@
 <div class="w-100 flex flex-wrap mt2">
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
-        <div class="title">Cơ cấu {{hangmuc}} theo phòng ban</div>
+        <div class="title">Cơ cấu {{title}} theo phòng ban</div>
         <app-horizontal-bar-chart [receivedData]="getsumwithcategoriesinpb"></app-horizontal-bar-chart>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
-        <div class="title">Cơ cấu {{hangmuc}} theo phòng ban</div>
+        <div class="title">Cơ cấu {{title}} theo phòng ban</div>
         <app-pie-chart [receivedData]="getpercentofeachpb" ></app-pie-chart>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
-        <div class="title">{{hangmuc}} trung bình </div>
+        <div class="title">{{title}} trung bình </div>
         <app-horizontal-bar-chart [receivedData]="getaverage"></app-horizontal-bar-chart>
     </div>
 </div>
 <div class="w-100 flex flex-wrap mt2">
     
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 block2">
-        <div class="title">{{hangmuc}}</div>
-        <app-grouped-bar-chart></app-grouped-bar-chart>
+        <div class="title">{{title}}</div>
+        <app-grouped-bar-chart [receivedData]="getsumwithcategorieseachmonth"></app-grouped-bar-chart>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2">
-        <div class="title">Chênh lệch {{hangmuc}} 2019 và 2020</div>
+        <div class="title">Chênh lệch {{title}} 2019 và 2020</div>
         <app-line-chart></app-line-chart>
     </div>
     
@@ -134,7 +134,7 @@
 <div class="w-100 flex flex-wrap mt2">
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
-        <div class="title">{{hangmuc}} trung bình</div>
+        <div class="title">{{title}} trung bình</div>
         <app-combo-line-bar-chart></app-combo-line-bar-chart>
     </div>
     
@@ -152,7 +152,7 @@
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
         <div class="title">Số lượng nhân sự</div>
-        <app-grouped-bar-chart></app-grouped-bar-chart>
+        <app-grouped-bar-chart ></app-grouped-bar-chart>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import {BindingDataToRouterService} from './../../../service/binding_data_to_router/binding-data-to-router.service';
 import {Subscription,Subject,Observable} from 'rxjs';
 import {filter} from '../../../service/const/fiter_types_const';
-
+import {multi} from './../../../service/const/dataFromApi'
 import {ApiService} from './../../../service/api/api.service';
 import {HrmReportService} from './../../service/hrm-report.service'
 @Component({
@@ -18,7 +18,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public filter;
   public thang:number=1; 
   public nam:number=2020;
-  public hangmuc:string="Tổng thu nhập"
+  public title:string="Tổng thu nhập"
   //dash1
   public getsumwithcategoriesnow:number=0;
   public getsumwithcategoriespast:number=0;
@@ -39,8 +39,9 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public sum=0
   //dash7
   public getsumwithcategoriesinpbwithcuahang;
-  public getaverage
+  public getaverage;
   //dash8
+  public getsumwithcategorieseachmonth=multi;
   constructor(
     public bindingData:BindingDataToRouterService,
     public apiService:ApiService,
@@ -50,9 +51,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       //pass filter infor(x) to child
     this.subscription = bindingData.getData().subscribe(x => {
       if(x){
+        console.log(x)
       this.nam=x.nam;
       this.thang=x.thang;
-      this.hangmuc=x.hangmuc
+      this.title=x.hangmuc
       }
     });
     
@@ -85,7 +87,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         this.getsumwithmonthpast=0;
         this.getcountedhrminmonthnow=0;
         this.getcountedhrminmonthpast=0;
-         //dash1,2
+         //dash1,2,8
           this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
             if(status){
               for (let i = 0; i < data.length; i++) {
@@ -97,6 +99,13 @@ export class HrmReportComponent implements OnInit,OnDestroy {
                 }
               }
             }
+            //dash 8
+            for (let i = 0; i < data.length; i++) {
+              this.getsumwithcategorieseachmonth[i].name=data[i].name;
+              this.getsumwithcategorieseachmonth[i].series[0].name=this.nam.toString();
+              this.getsumwithcategorieseachmonth[i].series[0].value=data[i].value
+            }
+            this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth]
           }) 
           this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang,hangmuc},(status,data)=>{
             if(status){
@@ -166,12 +175,6 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               this.getaverage=data
             }
           })
-         //dash 8
-         this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
-           if(status){
-             console.log(data)
-           }
-         })
 
         nam--
 
@@ -185,6 +188,13 @@ export class HrmReportComponent implements OnInit,OnDestroy {
                 this.getsumwithmonthpast=data[i].value
               }
             }
+             //dash 8
+             console.log(data)
+            for (let i = 0; i < data.length; i++) {
+              this.getsumwithcategorieseachmonth[i].series[1].name=(this.nam-1).toString();
+              this.getsumwithcategorieseachmonth[i].series[1].value=data[i].value;
+            }
+            this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth]
           }
         }) 
         this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
