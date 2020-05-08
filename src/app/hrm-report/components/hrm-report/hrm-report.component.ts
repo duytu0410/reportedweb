@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import {BindingDataToRouterService} from './../../../service/binding_data_to_router/binding-data-to-router.service';
 import {Subscription,Subject,Observable} from 'rxjs';
 import {filter} from '../../../service/const/fiter_types_const';
-import {multi} from './../../../service/const/dataFromApi'
+import {single,multi,lineChart} from './../../../service/const/dataFromApi'
 import {ApiService} from './../../../service/api/api.service';
 import {HrmReportService} from './../../service/hrm-report.service'
 @Component({
@@ -42,6 +42,12 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public getaverage;
   //dash8
   public getsumwithcategorieseachmonth=multi;
+  //dash 9
+  public getsumwithcategorieseachdifferent=lineChart;
+  public getsumwithcategorieseachnow;
+  public getsumwithcategorieseachpast=single;
+  //dash 10
+  public getpercentofeachmonth
   constructor(
     public bindingData:BindingDataToRouterService,
     public apiService:ApiService,
@@ -51,10 +57,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       //pass filter infor(x) to child
     this.subscription = bindingData.getData().subscribe(x => {
       if(x){
-        console.log(x)
       this.nam=x.nam;
       this.thang=x.thang;
       this.title=x.hangmuc
+      this.getsumwithcategorieseachdifferent[0].name=this.title+" năm "+this.nam+" và "+(this.nam-1)
       }
     });
     
@@ -90,14 +96,21 @@ export class HrmReportComponent implements OnInit,OnDestroy {
          //dash1,2,8
           this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
             if(status){
+              //dash9,dash10
+              this.getsumwithcategorieseachnow=data
+              //hết dash9
+              //dash1
               for (let i = 0; i < data.length; i++) {
                 //get sum with categories this year
                 this.getsumwithcategoriesnow+=data[i].value
+              //hết dash1
+              //dash2  
                   //get sum with categories add month this year
                 if(data[i].name==thang){
                   this.getsumwithmonthnow=data[i].value
                 }
               }
+              //hết dash 2
             }
             //dash 8
             for (let i = 0; i < data.length; i++) {
@@ -106,7 +119,11 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               this.getsumwithcategorieseachmonth[i].series[0].value=data[i].value
             }
             this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth]
+            //hết dash 8
+
           }) 
+          
+          //dash3
           this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang,hangmuc},(status,data)=>{
             if(status){
               for (let i = 0; i < data.length; i++) {
@@ -116,6 +133,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               }
             }
           }) 
+          //hết dash 3
           //dash 4
           this.apiService.getCountedAllNewHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
             if(status){
@@ -136,6 +154,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               }
             }
           }) 
+          //hết dash 4
           //dash5
           this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
@@ -146,6 +165,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               this.getsumwithcategoriesinpb=data  
             }
           }) 
+          //hết dash 5
           //dash6
           this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
@@ -157,6 +177,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               this.getpercentofeachpb=data
             }
           }) 
+          //hết dash 6
           //dash 7
           this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
@@ -165,6 +186,12 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           }) 
           this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
+              // if(data.length>0){
+              //   let list:Array<any>=new Array<any>(data)
+              //   list[0][0].value=200
+              //   console.log(list[0])
+              //   console.log(data)
+              // }
               for (let i = 0; i < data.length; i++) {
                 if(this.getsumwithcategoriesinpbwithcuahang){
                   if(data[i].value&&this.getsumwithcategoriesinpbwithcuahang[i].value){
@@ -175,7 +202,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
               this.getaverage=data
             }
           })
-
+          //hết dash 7
         nam--
 
 
@@ -183,20 +210,54 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
           if(status){
             for (let i = 0; i < data.length; i++) {
+              //dash 1
               this.getsumwithcategoriespast+=data[i].value
+              console.log(this.getsumwithcategoriespast)
+              //hết dash 1
+              //dash 2
               if(data[i].name==thang){
                 this.getsumwithmonthpast=data[i].value
               }
+              //hết dash2
             }
              //dash 8
-             console.log(data)
             for (let i = 0; i < data.length; i++) {
               this.getsumwithcategorieseachmonth[i].series[1].name=(this.nam-1).toString();
               this.getsumwithcategorieseachmonth[i].series[1].value=data[i].value;
             }
-            this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth]
+            this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth];
+            //hết dash 8
+            //dash 9
+            if(data.length!=0){
+              for (let i = 0; i < data.length; i++) {
+                if(data[i].value){
+                  data[i].value=this.getsumwithcategorieseachnow[i].value-data[i].value;
+                  this.getsumwithcategorieseachdifferent[0].series=data;
+                }
+              }
+            }
+            else{
+                this.getsumwithcategorieseachdifferent[0].series=this.getsumwithcategorieseachnow
+            }
+            this.getsumwithcategorieseachdifferent=[...this.getsumwithcategorieseachdifferent]
           }
         }) 
+        //dash 10
+        this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
+          if(status){
+            if(data.length>0){
+              for (let i = 0; i < data.length; i++) {
+                data[i].value=data[i].value/this.getsumwithcategoriespast
+              }
+              this.getpercentofeachmonth=data; 
+            }
+            else{
+              this.getpercentofeachmonth=this.getsumwithcategorieseachnow
+            }
+            this.getpercentofeachmonth=[...this.getpercentofeachmonth] 
+          }
+        })
+        //dash 3
         this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
           if(status){
             for (let i = 0; i < data.length; i++) {
@@ -206,6 +267,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
             }
           }
         }) 
+        //hết dash3
       }
   });
   }

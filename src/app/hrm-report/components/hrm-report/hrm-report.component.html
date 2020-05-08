@@ -122,13 +122,13 @@
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2">
-        <div class="title">Chênh lệch {{title}} 2019 và 2020</div>
-        <app-line-chart></app-line-chart>
+        <div class="title">Chênh lệch {{title}} {{nam-1}} và {{nam}}</div>
+        <app-line-chart [receivedData]="getsumwithcategorieseachdifferent"></app-line-chart>
     </div>
     
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block2">
         <div class="title">% tăng trưởng so với năm trước</div>
-        <app-horizontal-bar-chart></app-horizontal-bar-chart>
+        <app-horizontal-bar-chart [receivedData]="getpercentofeachmonth"></app-horizontal-bar-chart>
     </div>
 </div>
 <div class="w-100 flex flex-wrap mt2">
@@ -139,12 +139,12 @@
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
-        <div class="title">Tăng trưởng so với tháng trước 2020</div>
+        <div class="title">Tăng trưởng so với tháng trước năm {{nam}}</div>
         <app-line-chart></app-line-chart>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
-        <div class="title">% tăng trưởng so với tháng trước năm 2020</div>
+        <div class="title">% tăng trưởng so với tháng trước năm {{nam}}</div>
         <app-bubble-chart></app-bubble-chart>
     </div>
 </div>

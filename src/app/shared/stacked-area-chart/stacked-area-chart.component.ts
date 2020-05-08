@@ -34,7 +34,7 @@ export class StackedAreaChartComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.receivedData)
+
   }
     
   

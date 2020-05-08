@@ -11,10 +11,6 @@ export var single = [
   {
     "name": "France",
     "value": 0
-  },
-  {
-    "name": "Vietnam",
-    "value": 0
   }
   
 ];
@@ -22,7 +18,7 @@ export var single = [
 
 export var multi = [
   {
-    "name": "Germany",
+    "name": "Chênh lệch doanh thu",
     "series": [
       {
         "name": "2010",
@@ -34,7 +30,6 @@ export var multi = [
       }
     ]
   },
-
   {
     "name": "USA",
     "series": [
@@ -48,7 +43,6 @@ export var multi = [
       }
     ]
   },
-
   {
     "name": "France",
     "series": [
@@ -257,6 +251,30 @@ export var barChart: any = [
     name: 'China',
     value: 500
   }
+];
+export var lineChart = [
+  {
+    "name": "Chênh lệch doanh thu",
+    "series": [
+      {
+        "name": "2016",
+        "value": "0"
+      },
+      {
+        "name": "2017",
+        "value": "0"
+      },
+      {
+        "name": "2018",
+        "value": "0"
+      },
+      {
+        "name": "2019",
+        "value": "0"
+      }
+    ],
+  }
+  
 ];
 
 
