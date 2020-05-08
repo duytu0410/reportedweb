@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import {BindingDataToRouterService} from './../../../service/binding_data_to_router/binding-data-to-router.service';
 import {Subscription,Subject,Observable} from 'rxjs';
+import {filter} from '../../../service/const/fiter_types_const';
+
 import {ApiService} from './../../../service/api/api.service';
-import {single,single2,single3} from './../../../service/const/dataFromApi';
 import {HrmReportService} from './../../service/hrm-report.service'
 @Component({
   selector: 'app-hrm-report',
@@ -14,8 +15,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public subscription:Subscription;
   private messageSubscription: Subscription;
   public body;
+  public filter;
   public thang:number=1; 
   public nam:number=2020;
+  public hangmuc:string="Tổng thu nhập"
   //dash1
   public getsumwithcategoriesnow:number=0;
   public getsumwithcategoriespast:number=0;
@@ -36,21 +39,21 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public sum=0
   //dash7
   public getsumwithcategoriesinpbwithcuahang;
-  public getcountedallhrineachpb;
   public getaverage
+  //dash8
   constructor(
     public bindingData:BindingDataToRouterService,
     public apiService:ApiService,
     public hrmReportService:HrmReportService
     ) {
-     
+      this.filter=filter
       //pass filter infor(x) to child
     this.subscription = bindingData.getData().subscribe(x => {
       if(x){
       this.nam=x.nam;
       this.thang=x.thang;
+      this.hangmuc=x.hangmuc
       }
-      
     });
     
   }
@@ -66,6 +69,14 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         let phongban=this.body.phongban;
         let cuahang=this.body.cuahang;
         let hangmuc=this.body.hangmuc;
+        //chuyển hạng mục về đúng kiểu để gửi api
+        for (let i = 0; i < this.filter.length; i++) {
+            for (let j = 0; j< this.filter[i].view.length; j++) {
+              if(hangmuc==this.filter[i].view[j]){
+                  hangmuc=this.filter[i].value[j]
+              }
+            }
+          }
         let manv=this.body.manv;
         //get sum with categories this year
         this.getsumwithcategoriesnow=0;
@@ -138,16 +149,16 @@ export class HrmReportComponent implements OnInit,OnDestroy {
             }
           }) 
           //dash 7
-          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc,cuahang},(status,data)=>{
+          this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
                 this.getsumwithcategoriesinpbwithcuahang=data
             }
           }) 
-          this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc,cuahang},(status,data)=>{
+          this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc},(status,data)=>{
             if(status){
               for (let i = 0; i < data.length; i++) {
                 if(this.getsumwithcategoriesinpbwithcuahang){
-                  if (data[i].value&&this.getsumwithcategoriesinpbwithcuahang[i].value) {
+                  if(data[i].value&&this.getsumwithcategoriesinpbwithcuahang[i].value){
                     data[i].value=this.getsumwithcategoriesinpbwithcuahang[i].value/data[i].value
                   }
                 }

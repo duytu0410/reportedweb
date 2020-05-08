@@ -18,35 +18,7 @@ export var single = [
   }
   
 ];
-export var single2 = [
-  {
-    "name": "Germany",
-    "value": 0
-  },
-  {
-    "name": "USA",
-    "value": 0
-  },
-  {
-    "name": "France",
-    "value": 0
-  },
-  
-];
-export var single3 = [
-  {
-    "name": "Germany",
-    "value": 0
-  },
-  {
-    "name": "USA",
-    "value": 0
-  },
-  {
-    "name": "France",
-    "value": 0
-  }
-];
+
 
 export var multi = [
   {
