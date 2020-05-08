@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {multi} from '../../service/const/dataFromApi'
 @Component({
   selector: 'app-grouped-bar-chart',
@@ -6,6 +6,7 @@ import {multi} from '../../service/const/dataFromApi'
   styleUrls: ['./grouped-bar-chart.component.css']
 })
 export class GroupedBarChartComponent implements OnInit {
+  @Input() receivedData
   multi: any[];
   view: any[] = [300, 200];
 
