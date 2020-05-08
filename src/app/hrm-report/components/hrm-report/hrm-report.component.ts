@@ -146,8 +146,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc,cuahang},(status,data)=>{
             if(status){
               for (let i = 0; i < data.length; i++) {
-                if(this.getsumwithcategoriesinpbwithcuahang&&data[i].value&&this.getsumwithcategoriesinpbwithcuahang[i].value){
-                  data[i].value=this.getsumwithcategoriesinpbwithcuahang[i].value/data[i].value
+                if(this.getsumwithcategoriesinpbwithcuahang){
+                  if (data[i].value&&this.getsumwithcategoriesinpbwithcuahang[i].value) {
+                    data[i].value=this.getsumwithcategoriesinpbwithcuahang[i].value/data[i].value
+                  }
                 }
               }
               this.getaverage=data
