@@ -21,7 +21,7 @@ export var multi2=[
     "series": [
       {
         "name": "2010",
-        "value": 7300000
+        "value": 0
       },
       {
         "name": "2019",
@@ -35,7 +35,7 @@ export var multi2=[
     "series": [
       {
         "name": "2010",
-        "value": 7870000
+        "value":0
       },
       {
         "name": "2019",
@@ -48,7 +48,7 @@ export var multi2=[
     "series": [
       {
         "name": "2010",
-        "value": 7870000
+        "value": 0
       },
       {
         "name": "2019",
@@ -321,23 +321,23 @@ export var combo=[
   [
     {
       name: 'USA',
-      value: 50000
+      value: 0
     },
     {
       name: 'United Kingdom',
-      value: 30000
+      value: 0
     },
     {
       name: 'France',
-      value: 10000
+      value: 0
     },
     {
       name: 'Japan',
-      value: 5000
+      value: 0
     },
     {
       name: 'China',
-      value: 500
+      value: 0
     }
   ],
   [
@@ -346,22 +346,22 @@ export var combo=[
       series: [
             {
         name: 'USA',
-        value: 50
+        value: 0
       },
         {
-          value: 80,
+          value: 0,
           name: 'United Kingdom'
         },
         {
-          value: 85,
+          value: 0,
           name: 'France'
         },
         {
-          value: 90,
+          value: 0,
           name: 'Japan'
         },
         {
-          value: 100,
+          value: 0,
           name: 'China'
         }
       ]

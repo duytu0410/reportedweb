@@ -86,6 +86,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     this.messageSubscription = this.bindingData.message.subscribe(m => {
       if(m){
         this.body=this.bindingData.bridge;
+        console.log(this.body)
         let nam=this.body.nam;
         let thang=this.body.thang;
         let chinhanh=this.body.chinhanh;
@@ -111,6 +112,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
          //dash1,2,8
           this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
             if(status){
+              console.log(data)
               //dash9,dash10
               this.getsumwithcategorieseachnow=data
               //hết dash9
