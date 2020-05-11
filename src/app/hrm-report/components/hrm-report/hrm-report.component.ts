@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import {BindingDataToRouterService} from './../../../service/binding_data_to_router/binding-data-to-router.service';
 import {Subscription,Subject,Observable} from 'rxjs';
 import {filter} from '../../../service/const/fiter_types_const';
-import {single,multi,lineChart,barChart,lineChartSeries,bubbleData} from './../../../service/const/dataFromApi'
+import {single,multi2,lineChart,barChart,lineChartSeries,bubbleData} from './../../../service/const/dataFromApi'
 import {ApiService} from './../../../service/api/api.service';
 import {HrmReportService} from './../../service/hrm-report.service'
 @Component({
@@ -41,7 +41,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public getsumwithcategoriesinpbwithcuahang;
   public getaverage;
   //dash8
-  public getsumwithcategorieseachmonth=multi;
+  public getsumwithcategorieseachmonth=multi2;
   //dash 9
   public getsumwithcategorieseachdifferent=lineChart;
   public getsumwithcategorieseachnow;
@@ -54,7 +54,15 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   //dash 12
   public getdifferenteachmonth=lineChart
   //dash 13
-  public getdifferentpercenteachmonth=lineChart
+  public getdifferentpercenteachmonth=lineChart;
+  //dash 14
+  public getcountedhreachmonth=multi2
+  //dash 15
+  public getallnewhreachmonthnow=lineChartSeries;
+  public getallnewhreachmonthpast=barChart;
+  //dash 16
+  public getallquitedhreachmonthnow=lineChartSeries;
+  public getallquitedhreachmonthpast=barChart;
   constructor(
     public bindingData:BindingDataToRouterService,
     public apiService:ApiService,
@@ -164,49 +172,69 @@ export class HrmReportComponent implements OnInit,OnDestroy {
                    }
                   }
                 })
-            }
-          
-         
-            //dash 8
-            for (let i = 0; i < data.length; i++) {
-              this.getsumwithcategorieseachmonth[i].name=data[i].name;
-              this.getsumwithcategorieseachmonth[i].series[0].name=this.nam.toString();
-              this.getsumwithcategorieseachmonth[i].series[0].value=data[i].value
-            }
-            this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth]
-            //hết dash 8
+                 //dash 8
+                  for (let i = 0; i < data.length; i++) {
+                    this.getsumwithcategorieseachmonth[i].name=data[i].name;
+                    this.getsumwithcategorieseachmonth[i].series[0].name=this.nam.toString();
+                    this.getsumwithcategorieseachmonth[i].series[0].value=data[i].value
+                  }
 
+                  this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth]
+                //hết dash 8
+            }
           }) 
           
           //dash3
           this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang,hangmuc},(status,data)=>{
             if(status){
+              console.log(data)
+              let a=JSON.parse(JSON.stringify(this.getcountedhreachmonth))
               for (let i = 0; i < data.length; i++) {
+                //dash 14
+                a[i].series[0].name=nam+1
+                a[i].series[0].value=data[i].value
+                a[i].name=data[i].name
                 if(data[i].name=thang){
                   this.getcountedhrminmonthnow=data[i].value
                 } 
               }
+              this.getcountedhreachmonth=[...a]
+               //hết dash 14
             }
           }) 
           //hết dash 3
           //dash 4
+          console.log(nam)
           this.apiService.getCountedAllNewHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
             if(status){
+              let a=JSON.parse(JSON.stringify(this.getallnewhreachmonthnow))
+              a[0].name="Số lượng nhân sự tăng";
+              console.log(data)
               for (let i = 0; i < data.length; i++) {
+                //dash 15
+                a[0].series[i].value=data[i].value;
+                a[0].series[i].name=data[i].name;
                 if(data[i].name=thang){
                   this.getcountedallnewhr=data[i].value
                 }
               }
+              this.getallnewhreachmonthnow=[...a]
             }
           }) 
           //dash 4
           this.apiService.getCountedAllQuitedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
             if(status){
+              let a=JSON.parse(JSON.stringify(this.getallquitedhreachmonthnow))
+              a[0].name="Số lượng nhân sự giảm"
               for (let i = 0; i < data.length; i++) {
+                //dash 16
+                a[0].series[i].value=data[i].value;
+                a[0].series[i].name=data[i].name;
                 if(data[i].name=thang){
                   this.getcountedallquitedhr=data[i].value
                 }
               }
+              this.getallquitedhreachmonthnow=[...a]
             }
           }) 
           //hết dash 4
@@ -256,7 +284,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           //hết dash 7
         nam--
         //and last year
-        console.log(nam)
+       
         this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
           if(status){
             for (let i = 0; i < data.length; i++) {
@@ -271,7 +299,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
             }
              //dash 8
             for (let i = 0; i < data.length; i++) {
-              this.getsumwithcategorieseachmonth[i].series[1].name=(this.nam-1).toString();
+              this.getsumwithcategorieseachmonth[i].series[1].name=(nam-1).toString();
               this.getsumwithcategorieseachmonth[i].series[1].value=data[i].value;
             }
             this.getsumwithcategorieseachmonth=[...this.getsumwithcategorieseachmonth];
@@ -293,7 +321,6 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           //hết dash9
           //dash11
             
-            console.log(nam)
             this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang,hangmuc},(status2,data2)=>{
               if(status2){
                   let data3=JSON.parse(JSON.stringify(data2))
@@ -330,14 +357,46 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         //dash 3
         this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
           if(status){
+            let a=JSON.parse(JSON.stringify(this.getcountedhreachmonth))
             for (let i = 0; i < data.length; i++) {
+               //dash 14
+               a[i].series[1].name=nam
+               a[i].series[1].value=data[i].value
+               a[i].name=data[i].name
               if(data[i].name=thang){
                 this.getcountedhrminmonthpast=data[i].value
               }
             }
+            this.getcountedhreachmonth=[...a]
+            //hết dash 14
           }
         }) 
         //hết dash3
+        //dash15
+        console.log(nam)
+        this.apiService.getCountedAllNewHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
+          if(status){
+            console.log(data)
+            for (let i = 0; i < data.length; i++) {
+              this.getallnewhreachmonthpast[i].name=data.name;
+              this.getallnewhreachmonthpast[i].value=data.value;
+            }
+            this.getallnewhreachmonthpast=[...this.getallnewhreachmonthpast]
+          }
+        }) 
+        //hết dash 15
+        //dash 16
+        this.apiService.getCountedAllQuitedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
+          if(status){
+            console.log(data)
+            for (let i = 0; i < data.length; i++) {
+              this.getallquitedhreachmonthpast[i].name=data.name;
+              this.getallquitedhreachmonthpast[i].value=data.value;
+            }
+            this.getallquitedhreachmonthpast=[...this.getallquitedhreachmonthpast]
+          }
+        }) 
+        //hết dash 16
       }
   });
   }

@@ -15,7 +15,48 @@ export var single = [
   
 ];
 
+export var multi2=[
+  {
+    "name": "Germany",
+    "series": [
+      {
+        "name": "2010",
+        "value": 7300000
+      },
+      {
+        "name": "2019",
+        "value":0
+      }
+    ]
+  },
 
+  {
+    "name": "USA",
+    "series": [
+      {
+        "name": "2010",
+        "value": 7870000
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "USB",
+    "series": [
+      {
+        "name": "2010",
+        "value": 7870000
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  }
+];
 export var multi = [
   {
     "name": "Chênh lệch doanh thu",
@@ -232,24 +273,24 @@ export var lineChartSeries = [
 ];
 export var barChart: any = [
   {
-    name: 'USA',
-    value: 50000
+    name: 'T1',
+    value: 0
   },
   {
-    name: 'United Kingdom',
-    value: 30000
+    name: 'T2',
+    value: 0
   },
   {
-    name: 'France',
-    value: 10000
+    name: 'T3',
+    value: 0
   },
   {
-    name: 'Japan',
-    value: 5000
+    name: 'T4',
+    value: 0
   },
   {
-    name: 'China',
-    value: 500
+    name: 'T5',
+    value: 0
   }
 ];
 export var lineChart = [
