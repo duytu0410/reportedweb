@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {bubbleData} from '../../service/const/dataFromApi'
 @Component({
   selector: 'app-bubble-chart',
@@ -6,6 +6,7 @@ import {bubbleData} from '../../service/const/dataFromApi'
   styleUrls: ['./bubble-chart.component.css']
 })
 export class BubbleChartComponent implements OnInit {
+  @Input() receivedData
   bubbleData: any[];
   view: any[] = [350, 200];
 
@@ -33,15 +34,15 @@ export class BubbleChartComponent implements OnInit {
   }
 
   onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
   onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
+    // console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
   onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    // console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
   ngOnInit(): void {
   }

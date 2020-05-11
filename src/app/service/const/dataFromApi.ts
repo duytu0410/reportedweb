@@ -205,26 +205,26 @@ export var bubbleData =  [
 ];
 export var lineChartSeries = [
   {
-    name: 'Tablets',
+    name: 'Tổng thu nhập trung bình',
     series: [
           {
       name: 'USA',
-      value: 50
+      value: 0
     },
       {
-        value: 80,
+        value: 0,
         name: 'United Kingdom'
       },
       {
-        value: 85,
+        value: 0,
         name: 'France'
       },
       {
-        value: 90,
+        value: 0,
         name: 'Japan'
       },
       {
-        value: 100,
+        value: 0,
         name: 'China'
       }
     ]
@@ -276,5 +276,55 @@ export var lineChart = [
   }
   
 ];
-
+export var combo=[
+  [
+    {
+      name: 'USA',
+      value: 50000
+    },
+    {
+      name: 'United Kingdom',
+      value: 30000
+    },
+    {
+      name: 'France',
+      value: 10000
+    },
+    {
+      name: 'Japan',
+      value: 5000
+    },
+    {
+      name: 'China',
+      value: 500
+    }
+  ],
+  [
+    {
+      name: 'Tablets',
+      series: [
+            {
+        name: 'USA',
+        value: 50
+      },
+        {
+          value: 80,
+          name: 'United Kingdom'
+        },
+        {
+          value: 85,
+          name: 'France'
+        },
+        {
+          value: 90,
+          name: 'Japan'
+        },
+        {
+          value: 100,
+          name: 'China'
+        }
+      ]
+    }
+  ]
+]
 

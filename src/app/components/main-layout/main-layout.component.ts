@@ -20,12 +20,12 @@ export class MainLayoutComponent implements OnInit,OnDestroy {
     public apiService:ApiService
     ) {
       this.filterForm = this.formBuilder.group({
-        "nam": ['', Validators.required],
-        "thang": ['', Validators.required],
-        "chinhanh":['', Validators.required],
+        "nam": [2020, Validators.required],
+        "thang": [2, Validators.required],
+        "chinhanh":['Hội sở', Validators.required],
         "phongban":['Ban Giám Đốc', Validators.required],
-        "cuahang":['', Validators.required],
-        "manv":['', Validators.required],
+        "cuahang":['Kim Mã', Validators.required],
+        "manv":['PSL002', Validators.required],
         "hangmuc":['Tổng thu nhập', Validators.required],
       });
     this.filter=filter;

@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {lineChartSeries,barChart} from '../../../service/const/dataFromApi'
+import { Component, OnInit,Input } from '@angular/core';
+import {barChart,lineChartSeries} from '../../../service/const/dataFromApi'
 @Component({
   selector: 'app-combo-line-bar-chart',
   templateUrl: './combo-line-bar-chart.component.html',
   styleUrls: ['./combo-line-bar-chart.component.css']
 })
 export class ComboLineBarChartComponent implements OnInit {
+    @Input() receivedData
+    @Input() receivedData2
   constructor() { }
   ngOnInit(): void {
+    
   }
   view = [300,300];
   showXAxis = true;
@@ -26,6 +29,7 @@ export class ComboLineBarChartComponent implements OnInit {
   rotateXAxisTicks:boolean=true;
   barChart: any[] = barChart;
   lineChartSeries: any[] = lineChartSeries;
+  noBarWhenZero:boolean=true;
   lineChartScheme = {
     name: 'coolthree',
     selectable: true,
