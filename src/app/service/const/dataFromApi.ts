@@ -1,15 +1,51 @@
 
 export var single = [
   {
-    "name": "Germany",
+    "name": "T1",
     "value": 0
   },
   {
-    "name": "USA",
+    "name": "T2",
     "value": 0
   },
   {
-    "name": "France",
+    "name": "T3",
+    "value": 0
+  },
+  {
+    "name": "T4",
+    "value": 0
+  },
+  {
+    "name": "T5",
+    "value": 0
+  },
+  {
+    "name": "T6",
+    "value": 0
+  },
+  {
+    "name": "T7",
+    "value": 0
+  },
+  {
+    "name": "T8",
+    "value": 0
+  },
+  {
+    "name": "T9",
+    "value": 0
+  },
+  {
+    "name": "T10",
+    "value": 0
+  },
+  {
+    "name": "T11",
+    "value": 0
+  },
+  {
+    "name": "T12",
     "value": 0
   }
   
