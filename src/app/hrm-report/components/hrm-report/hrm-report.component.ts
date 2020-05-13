@@ -186,14 +186,9 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           //hết dash 5
           //dash 6
           let data6=JSON.parse(JSON.stringify(data))
-          let data6a=JSON.parse(JSON.stringify(data))
-          
-          console.log(data6a)
           for (let i = 0; i < data6.length; i++) {
-            this.hrmReportService.sum=this.hrmReportService.sum+data6[i].value
-            
+            this.hrmReportService.sum+=data6[i].value
           }
-          console.log(data6a)
           console.log(this.hrmReportService.sum)
           for (let i = 0; i <data6.length; i++) {
             if(this.hrmReportService.sum!=0){
@@ -201,7 +196,21 @@ export class HrmReportComponent implements OnInit,OnDestroy {
             }
           }
           this.getpercentofeachpb=data6
+          //hết dash 6
+          //dash 7
           let data7=JSON.parse(JSON.stringify(data))
+          this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc},(status2,data)=>{
+            if(status2){
+              let data7a=JSON.parse(JSON.stringify(data))
+                for (let i = 0; i < data7a.length; i++) {
+                    if(data7a[i].value&&data7[i].value){
+                      data7a[i].value=data7[i].value/data[i].value
+                    }
+                }
+              this.getaverage=data7a
+            }
+          })
+          //hết dash 7
         }
       }) 
     
@@ -212,16 +221,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
          
             this.getsumwithcategoriesinpbwithcuahang=JSON.parse(JSON.stringify(data))
               nam=JSON.parse(JSON.stringify(this.hrmReportService.body.nam))
-              this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc},(status2,data2)=>{
-                if(status2){
-                    for (let i = 0; i < data2.length; i++) {
-                        if(data2[i].value&&this.getsumwithcategoriesinpbwithcuahang[i].value){
-                          data2[i].value=this.getsumwithcategoriesinpbwithcuahang[i].value/data2[i].value
-                        }
-                    }
-                  this.getaverage=data2
-                }
-              })
+          
         }
       }) 
       
