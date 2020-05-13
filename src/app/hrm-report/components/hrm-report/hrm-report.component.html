@@ -48,10 +48,10 @@
                 <div class="percent flex flex-wrap w-100 justify-center">
                     <h4 class="triangle-up pt1" *ngIf="getsumwithcategoriesnow-getsumwithcategoriespast>0"></h4>
                     <h4 class="triangle-down pt1" *ngIf="getsumwithcategoriespast-getsumwithcategoriesnow>0"></h4>
-                    <h4 class="pl2 " *ngIf="getsumwithcategoriespast!==0&&getsumwithcategoriesnow!==0&&getsumwithcategoriesnow>getsumwithcategoriespast" style="color: #06f812;">{{(getsumwithcategoriesnow-getsumwithcategoriespast)/(getsumwithcategoriespast)}}</h4>
-                    <h4 class="pl2 " *ngIf="getsumwithcategoriespast!==0&&getsumwithcategoriesnow!==0&&getsumwithcategoriespast>getsumwithcategoriesnow" style="color: #fa0303;">{{(getsumwithcategoriesnow-getsumwithcategoriespast)/(getsumwithcategoriespast)}}</h4>
+                    <h4 class="pl2 " *ngIf="getsumwithcategoriespast!==0&&getsumwithcategoriesnow!==0&&getsumwithcategoriesnow>getsumwithcategoriespast" style="color: #06f812;">{{(getsumwithcategoriesnow-getsumwithcategoriespast)/(getsumwithcategoriespast)*100}}%</h4>
+                    <h4 class="pl2 " *ngIf="getsumwithcategoriespast!==0&&getsumwithcategoriesnow!==0&&getsumwithcategoriespast>getsumwithcategoriesnow" style="color: #fa0303;">{{(getsumwithcategoriespast-getsumwithcategoriesnow)/(getsumwithcategoriespast)*100}}%</h4>
                     <h4 class="pl2" *ngIf="getsumwithcategoriespast==0&&getsumwithcategoriesnow!==0" style="color: #06f812;">100%</h4>
-                    <h4 class="pl2 yellow" *ngIf="getsumwithcategoriespast>=getsumwithcategoriesnow">0%</h4>
+                    <h4 class="pl2 yellow" *ngIf="getsumwithcategoriespast==getsumwithcategoriesnow">0%</h4>
                 </div>
                 <div class="now w-100 flex flex-wrap w-100 justify-around  ">
                     <h5>Năm {{hrmReportService.nam}}</h5>
@@ -77,10 +77,10 @@
                 <div class="percent flex flex-wrap w-100 justify-center">
                     <h4 class="triangle-up pt1" *ngIf="getsumwithmonthnow-getsumwithmonthpast>0"></h4>
                     <h4 class="triangle-down pt1" *ngIf="getsumwithmonthpast-getsumwithmonthnow>0"></h4>
-                    <h4 class="pl2 " *ngIf="getsumwithmonthpast!==0&&getsumwithmonthnow!==0&&getsumwithmonthnow>getsumwithmonthpast" style="color: #06f812;">{{(getsumwithmonthnow-getsumwithmonthpast)/(getsumwithmonthpast)}}</h4>
-                    <h4 class="pl2 " *ngIf="getsumwithmonthpast!==0&&getsumwithmonthnow!==0&&getsumwithmonthpast>getsumwithmonthnow" style="color: #fa0303;">{{(getsumwithmonthnow-getsumwithmonthpast)/(getsumwithmonthpast)}}</h4>
+                    <h4 class="pl2 " *ngIf="getsumwithmonthpast!==0&&getsumwithmonthnow!==0&&getsumwithmonthnow>getsumwithmonthpast" style="color: #06f812;">{{(getsumwithmonthnow-getsumwithmonthpast)/(getsumwithmonthpast)*100}}%</h4>
+                    <h4 class="pl2 " *ngIf="getsumwithmonthpast!==0&&getsumwithmonthnow!==0&&getsumwithmonthpast>getsumwithmonthnow" style="color: #fa0303;">{{(getsumwithmonthpast-getsumwithmonthnow)/(getsumwithmonthpast)*100}}%</h4>
                     <h4 class="pl2" *ngIf="getsumwithmonthpast==0&&getsumwithmonthnow!==0" style="color: #06f812;">100%</h4>
-                    <h4 class="pl2 yellow" *ngIf="getsumwithmonthpast>=getsumwithmonthnow">0%</h4>
+                    <h4 class="pl2 yellow" *ngIf="getsumwithmonthpast==getsumwithmonthnow">0%</h4>
                 </div>
                 <div class="now w-100 flex flex-wrap w-100 justify-around  ">
                     <h5>Năm {{hrmReportService.nam}}</h5>
@@ -156,7 +156,7 @@
         <div class="title">{{title}}</div>
         <div class="flex">
             <app-grouped-bar-chart [receivedData]="getsumwithcategorieseachmonth"></app-grouped-bar-chart>
-            <table class="table table-dark">
+            <!-- <table class="table table-dark">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -173,7 +173,7 @@
                     <td>@mdo</td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
         </div>
        
     </div>

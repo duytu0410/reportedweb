@@ -19,27 +19,10 @@ export class MainLayoutComponent implements OnInit,OnDestroy {
     private bindingDataToRouterService:BindingDataToRouterService,
     public apiService:ApiService
     ) {
-    //   this.filterForm = this.formBuilder.group({
-    //     "nam": [2020, Validators.required],
-    //     "thang": [2, Validators.required],
-    //     "chinhanh":['Hội sở', Validators.required],
-    //     "phongban":['Ban Giám Đốc', Validators.required],
-    //     "cuahang":['Kim Mã', Validators.required],
-    //     "manv":['PSL002', Validators.required],
-    //     "hangmuc":['Tổng thu nhập', Validators.required],
-    //   });
-    // this.filter=filter;
+   
   }
  
-// onSubmit(data){
-  
-//   if(data){
-//     this.bindingDataToRouterService.bridge=data
-//     this.bindingDataToRouterService.buttonClicked(true);
-//     this.bindingDataToRouterService.sendData(data);
-//   }
-  // this.filterForm.reset();
-// }
+
 ngOnInit(): void {
 
 }

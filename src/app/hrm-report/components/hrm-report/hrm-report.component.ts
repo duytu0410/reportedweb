@@ -67,7 +67,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     private formBuilder: FormBuilder,
     ) {
       this.filterForm = this.formBuilder.group({
-        "nam": [2020, Validators.required],
+        "nam": [2019, Validators.required],
         "thang": [2, Validators.required],
         "chinhanh":['Hà Nội', Validators.required],
         "phongban":['Accounting', Validators.required],

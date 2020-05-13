@@ -8,29 +8,12 @@
             <div class="row">
                 <nav class="flex ml4 mb2">
                             <button routerLink="" routerLinkActive="active">Nhân sự</button>
-                            <button routerLink="/account" routerLinkActive="active">Doanh thu</button>
+                            <button routerLink="" routerLinkActive="">Doanh thu</button>
                 </nav>
             </div>
             
         </div>
-        <!-- <div class="filter h3 row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <img src="./../../../assets//Capture4.PNG" alt="">
-                <h2 class="pl2">Báo cáo nhân sự công ty Gia Bảo</h2>
-            </div>
-            <form [formGroup]="filterForm" (ngSubmit)="onSubmit(filterForm.value)" class="col-xs-8 col-sm-8 col-md-8 col-lg-8 flex-wrap flex ">
-                <div class="block" *ngFor="let item of filter">
-                    <label for={{item.labels}}>{{item.labels}}</label>
-                    <select id={{item.labels}} formControlName={{item.formControlName}} required  >
-                        <option *ngFor="let i of item.view" [ngValue]="i">{{i}}</option>
-                        <option selected="selected" value="">All..</option>
-                    </select>
-                </div>
-                <div class="block">
-                        <button class="btn btn-success mt2" type="submit">Lấy dữ liệu</button>
-                </div>
-            </form>
-        </div> -->
+      
 </section>
 <router-outlet></router-outlet>
 <div class="w-100 mt2">

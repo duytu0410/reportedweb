@@ -12,7 +12,7 @@ export class ComboLineBarChartComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  view = [400,300];
+  view = [350,300];
   showXAxis =false;
   showYAxis = true;
   gradient = false;
@@ -24,7 +24,7 @@ export class ComboLineBarChartComponent implements OnInit {
   showYAxisLabel = false;
   yAxisLabel = 'GDP Per Capita';
   showGridLines = false;
-  innerPadding = '5%';
+  innerPadding = '10%';
   animations: boolean = true;
   rotateXAxisTicks:boolean=true;
   barChart: any[] = barChart;

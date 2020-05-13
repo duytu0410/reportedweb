@@ -8,19 +8,23 @@ import {multi} from '../../service/const/dataFromApi'
 export class GroupedBarChartComponent implements OnInit {
   @Input() receivedData
   multi: any[];
-  view: any[] = [300, 200];
+  view: any[] = [400, 200];
 
   // options
-  showXAxis: boolean = true;
-  showYAxis: boolean = true;
-  gradient: boolean = true;
-  showLegend: boolean = true;
+  showXAxis: boolean = false;
+  showYAxis: boolean =true;
+  gradient: boolean = false;
+  showLegend: boolean = false;
   showXAxisLabel: boolean = false;
   xAxisLabel: string = 'Country';
   showYAxisLabel: boolean = false;
   yAxisLabel: string = 'Population';
   legendTitle: string = 'Years';
-
+  tooltipDisabled=false;
+  showGridLines=false
+  barPadding:number=2;
+  groupPadding:number=4;
+  showDataLabel=false;
   colorScheme = {
     domain: ['#7aa3e5', '#a8385d', '#AAAAAA']
   };

@@ -9,12 +9,12 @@ export class BarChartComponent implements OnInit {
   single: any[];
   multi: any[];
 
-  view: any[] = [300, 200];
+  view: any[] = [350, 200];
 
   // options
   showXAxis = false;
   showYAxis = true;
-  gradient = true;
+  gradient =false;
   showLegend = false;
   showXAxisLabel = false;
   xAxisLabel = 'Country';
@@ -30,7 +30,7 @@ export class BarChartComponent implements OnInit {
   }
 
   onSelect(event) {
-    console.log(event);
+ 
   }
 
   ngOnInit(): void {
