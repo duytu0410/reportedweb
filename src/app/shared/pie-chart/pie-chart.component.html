@@ -7,7 +7,8 @@
       [labels]="showLabels"
       [gradient]="gradient"
       [doughnut]="doughnut"
-      (select)="onSelect($event)">
+      (select)="onSelect($event)"
+      [tooltipDisabled]="tooltipDisabled">
       <ng-template #tooltipTemplate let-model="model">
             <h5>
               {{model.name}}

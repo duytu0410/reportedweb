@@ -17,14 +17,15 @@ export class HorizontalBarChartComponent implements OnInit {
   view: any[] = [360, 200];
 
   // options
-  showXAxis = true;
+  showXAxis =false;
   showYAxis = true;
-  gradient = true;
+  gradient =false;
   showLegend = false;
   showXAxisLabel = false;
   xAxisLabel = 'Country';
   showYAxisLabel = false;
   yAxisLabel = 'Population';
+  tooltipDisabled=false
   colorScheme = {
     domain: ['#a5cca7','#deeaea', '#cde2ef','#90b39d','#d9889b','#f7dcd3', '#bdd6e8','#c3e6bc','#d6879b','#fdcec5','#7f9bb5']
   };

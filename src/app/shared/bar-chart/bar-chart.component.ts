@@ -12,7 +12,7 @@ export class BarChartComponent implements OnInit {
   view: any[] = [300, 200];
 
   // options
-  showXAxis = true;
+  showXAxis = false;
   showYAxis = true;
   gradient = true;
   showLegend = false;

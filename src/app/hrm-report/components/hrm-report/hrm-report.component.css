@@ -1,24 +1,47 @@
-
-.block{
+/* filter */
+section .filter{
+    width: 100%;
+    border-bottom:2px solid #666666;
+    height: fit-content;
+}
+section .filter .block{
+    width:10rem;
+    font-size: 0.8rem;
+    margin-top:1rem;
+    flex-direction: column;
+    margin-left:1rem;
+}
+section .block label{
+    margin-bottom: 0.3rem!important;
+}
+section .block select{
+    width: 100%;
+    height: 1.5rem;
+}
+h3{
+    color:rgb(0, 162, 255);
+}
+/* main */
+.main .block{
     border-top:1px solid #cbcbcb;
     border-left:1px solid #cbcbcb;
     border-bottom:1px solid #cbcbcb;
     position: relative;
     height: 12.5rem;
 }
-.block .different{
+.main .block .different{
     width: 100%;
     height: fit-content;
     justify-content: center;
 }
-.block .level h3{
+.main .block .level h3{
     text-align: center;
     /* color:#a5cca7; */
     font-weight: 700;
     margin-bottom: 0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.block .percent h4{
+.main .block .percent h4{
     text-align: center;
     /* color:#a5cca7; */
     font-weight: 600;

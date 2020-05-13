@@ -5,6 +5,11 @@ export const ReportedApi={
     AUTHORIZATION : "Authorization",
     CONTENT_TYPE:"Content-Type",
     API:{
+        //Filter BANG LUONG
+        GET_CHI_NHANH:"/api/Filters/ChiNhanh",
+        GET_PHONG_BAN:"/api/Filters/PhongBan",
+        GET_MANV:"/api/Filters/Manv",
+        GET_CUA_HANG:"/api/Filters/CuaHang",
         //HR_BANG LUONG
         GET_SUM_WITH_CATEGORIES_IN_PB:"/api/HR_BangLuong/GetSumWithCategoriesInPhongBan",
         GET_COUNTED_ALL_HR_IN_EACH_PB:"/api/HR_BangLuong/GetCountedAllHRInEachPB",

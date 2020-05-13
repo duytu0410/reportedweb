@@ -17,7 +17,7 @@ export var single = [
 
 export var multi2=[
   {
-    "name": "Germany",
+    "name": "T1",
     "series": [
       {
         "name": "2010",
@@ -31,7 +31,7 @@ export var multi2=[
   },
 
   {
-    "name": "USA",
+    "name": "T2",
     "series": [
       {
         "name": "2010",
@@ -44,7 +44,7 @@ export var multi2=[
     ]
   },
   {
-    "name": "USB",
+    "name": "T3",
     "series": [
       {
         "name": "2010",
@@ -55,7 +55,124 @@ export var multi2=[
         "value": 0
       }
     ]
-  }
+  },
+  {
+    "name": "T4",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T5",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T6",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T7",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T8",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T9",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T10",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T11",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "name": "T12",
+    "series": [
+      {
+        "name": "2010",
+        "value": 0
+      },
+      {
+        "name": "2019",
+        "value": 0
+      }
+    ]
+  },
 ];
 export var multi = [
   {
@@ -249,24 +366,52 @@ export var lineChartSeries = [
     name: 'Tổng thu nhập trung bình',
     series: [
           {
-      name: 'USA',
+      name: 'T1',
       value: 0
     },
       {
         value: 0,
-        name: 'United Kingdom'
+        name: 'T2'
       },
       {
         value: 0,
-        name: 'France'
+        name: 'T3'
       },
       {
         value: 0,
-        name: 'Japan'
+        name: 'T4'
       },
       {
         value: 0,
-        name: 'China'
+        name: 'T5'
+      },
+      {
+        value: 0,
+        name: 'T6'
+      },
+      {
+        value: 0,
+        name: 'T7'
+      },
+      {
+        value: 0,
+        name: 'T8'
+      },
+      {
+        value: 0,
+        name: 'T9'
+      },
+      {
+        value: 0,
+        name: 'T10'
+      },
+      {
+        value: 0,
+        name: 'T11'
+      },
+      {
+        value: 0,
+        name: 'T12'
       }
     ]
   }
@@ -290,6 +435,34 @@ export var barChart: any = [
   },
   {
     name: 'T5',
+    value: 0
+  },
+  {
+    name: 'T6',
+    value: 0
+  },
+  {
+    name: 'T7',
+    value: 0
+  },
+  {
+    name: 'T8',
+    value: 0
+  },
+  {
+    name: 'T9',
+    value: 0
+  },
+  {
+    name: 'T10',
+    value: 0
+  },
+  {
+    name: 'T11',
+    value: 0
+  },
+  {
+    name: 'T2',
     value: 0
   }
 ];

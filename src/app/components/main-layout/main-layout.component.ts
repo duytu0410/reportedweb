@@ -19,35 +19,27 @@ export class MainLayoutComponent implements OnInit,OnDestroy {
     private bindingDataToRouterService:BindingDataToRouterService,
     public apiService:ApiService
     ) {
-      this.filterForm = this.formBuilder.group({
-        "nam": [2020, Validators.required],
-        "thang": [2, Validators.required],
-        "chinhanh":['Hội sở', Validators.required],
-        "phongban":['Ban Giám Đốc', Validators.required],
-        "cuahang":['Kim Mã', Validators.required],
-        "manv":['PSL002', Validators.required],
-        "hangmuc":['Tổng thu nhập', Validators.required],
-      });
-    this.filter=filter;
+    //   this.filterForm = this.formBuilder.group({
+    //     "nam": [2020, Validators.required],
+    //     "thang": [2, Validators.required],
+    //     "chinhanh":['Hội sở', Validators.required],
+    //     "phongban":['Ban Giám Đốc', Validators.required],
+    //     "cuahang":['Kim Mã', Validators.required],
+    //     "manv":['PSL002', Validators.required],
+    //     "hangmuc":['Tổng thu nhập', Validators.required],
+    //   });
+    // this.filter=filter;
   }
  
-onSubmit(data){
+// onSubmit(data){
   
-  if(data){
-    //chuyển dữ liệu từ có dấu sang hợp với database
-    // for (let i = 0; i < this.filter.length; i++) {
-    //   for (let j = 0; j< this.filter[i].view.length; j++) {
-    //     if(data.hangmuc==this.filter[i].view[j]){
-    //       data.hangmuc=this.filter[i].value[j]
-    //     }
-    //   }
-    // }
-    this.bindingDataToRouterService.bridge=data
-    this.bindingDataToRouterService.buttonClicked(true);
-    this.bindingDataToRouterService.sendData(data);
-  }
+//   if(data){
+//     this.bindingDataToRouterService.bridge=data
+//     this.bindingDataToRouterService.buttonClicked(true);
+//     this.bindingDataToRouterService.sendData(data);
+//   }
   // this.filterForm.reset();
-}
+// }
 ngOnInit(): void {
 
 }

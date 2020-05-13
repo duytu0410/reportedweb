@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
 import { ReportedApi } from '../const/api_const';
 import { config } from 'rxjs';
 const ID = "{id}";
@@ -11,6 +10,31 @@ export class ApiService {
 
   constructor( private _http: HttpClient) { }
   private ROOT = `${ReportedApi.protocol_https}://${ReportedApi.DOMAIN}`;
+  //FILTER
+  getPhongBan(onFinish){
+    this._http.get(`${this.ROOT}${ReportedApi.API.GET_PHONG_BAN}`).subscribe(
+      (data) => { onFinish(true, data)},
+      (err) => {onFinish(false, err)}
+    )
+  }
+  getCuaHang(onFinish){
+    this._http.get(`${this.ROOT}${ReportedApi.API.GET_CUA_HANG}`).subscribe(
+      (data) => { onFinish(true, data)},
+      (err) => {onFinish(false, err)}
+    )
+  }
+  getMaNv(onFinish){
+    this._http.get(`${this.ROOT}${ReportedApi.API.GET_MANV}`).subscribe(
+      (data) => { onFinish(true, data)},
+      (err) => {onFinish(false, err)}
+    )
+  }
+  getChiNhanh(onFinish){
+    this._http.get(`${this.ROOT}${ReportedApi.API.GET_CHI_NHANH}`).subscribe(
+      (data) => { onFinish(true, data)},
+      (err) => {onFinish(false, err)}
+    )
+  }
   //HR
   // GET SUM WITH CATEGORIES (DASH 1,2)
   getSumWithCategoriesInPb(filter,onFinish){

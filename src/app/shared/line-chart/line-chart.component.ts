@@ -11,17 +11,17 @@ export class LineChartComponent implements OnInit {
   view: any[] = [300, 200];
 
   // options
-  legend: boolean = true;
+  legend: boolean =false;
   showLabels: boolean = true;
   animations: boolean = true;
-  xAxis: boolean = true;
+  xAxis: boolean =false;
   yAxis: boolean = true;
   showYAxisLabel: boolean = false;
   showXAxisLabel: boolean = false;
   xAxisLabel: string = 'Year';
   yAxisLabel: string = 'Population';
-  timeline: boolean = true;
-  tooltipDisabled:boolean=true;
+  timeline: boolean = false;
+  tooltipDisabled:boolean=false;
   colorScheme = {
     domain: ['#7f9bb5', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };

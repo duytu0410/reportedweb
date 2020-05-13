@@ -14,7 +14,7 @@ export class PieChartComponent implements OnInit {
   view: any[] = [350, 200];
 
   // options
-  showLegend = true;
+  showLegend = false;
   explodeSlices=false;
   colorScheme = {
     domain: ['#f68979', '#fcbeb1', '#bedfb1', '#be4060','#e4d4c5','61a06d','#cfdfc6']
@@ -22,7 +22,8 @@ export class PieChartComponent implements OnInit {
   // pie
   showLabels = false;
   doughnut = false;
-  gradient: boolean = true;
+  gradient: boolean = false;
+  tooltipDisabled:boolean=false;
   constructor() {
     Object.assign(this, {single, multi})   
   }
