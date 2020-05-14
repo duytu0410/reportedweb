@@ -1,5 +1,5 @@
 
-export var single = [
+export const single = [
   {
     "name": "T1",
     "value": 0
@@ -51,7 +51,7 @@ export var single = [
   
 ];
 
-export var multi2=[
+export const multi2=[
   {
     "name": "T1",
     "series": [
@@ -210,7 +210,7 @@ export var multi2=[
     ]
   },
 ];
-export var multi = [
+export const multi = [
   {
     "name": "Chênh lệch doanh thu",
     "series": [
@@ -251,7 +251,7 @@ export var multi = [
     ]
   }
 ];
-export var stacked_chart=[
+export const stacked_chart=[
   {
     "name": "Germany",
     "series": [
@@ -303,7 +303,7 @@ export var stacked_chart=[
     ]
   }
 ]
-export var bubbleData =  [
+export const bubbleData =  [
   {
     name: 'Germany',
     series: [
@@ -397,7 +397,7 @@ export var bubbleData =  [
     ]
   }
 ];
-export var lineChartSeries = [
+export const lineChartSeries = [
   {
     name: 'Tổng thu nhập trung bình',
     series: [
@@ -452,7 +452,7 @@ export var lineChartSeries = [
     ]
   }
 ];
-export var barChart: any = [
+export const barChart: any = [
   {
     name: 'T1',
     value: 0
@@ -502,31 +502,63 @@ export var barChart: any = [
     value: 0
   }
 ];
-export var lineChart = [
+export const lineChart = [
   {
-    "name": "Chênh lệch doanh thu",
+    "name": "Chênh lệch",
     "series": [
       {
-        "name": "2016",
-        "value": "0"
+        "name": "T1",
+        "value": 0
       },
       {
-        "name": "2017",
-        "value": "0"
+        "name": "T2",
+        "value": 0
       },
       {
-        "name": "2018",
-        "value": "0"
+        "name": "T3",
+        "value": 0
       },
       {
-        "name": "2019",
-        "value": "0"
-      }
+        "name": "T4",
+        "value": 0
+      },
+      {
+        "name": "T5",
+        "value": 0
+      },
+      {
+        "name": "T6",
+        "value": 0
+      },
+      {
+        "name": "T7",
+        "value": 0
+      },
+      {
+        "name": "T8",
+        "value": 0
+      },
+      {
+        "name": "T9",
+        "value": 0
+      },
+      {
+        "name": "T10",
+        "value": 0
+      },
+      {
+        "name": "T11",
+        "value": 0
+      },
+      {
+        "name": "T12",
+        "value": 0
+      },
     ],
   }
   
 ];
-export var combo=[
+export const combo=[
   [
     {
       name: 'USA',

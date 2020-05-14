@@ -39,6 +39,7 @@ export class HrmReportService {
   public getsumwithcategoriesinpb; 
   //dash 6
   public sum:number=0
+  public getpercentofeachpb;
   constructor() {
    };
   handlePercent(value1:number,value2:number):number{
@@ -51,5 +52,4 @@ export class HrmReportService {
               .replace(/đ/g, 'd').replace(/Đ/g, 'D')
               .replace(/\s/g, "");
   }
-
 }
