@@ -37,11 +37,14 @@ export class ApiService {
   }
   //HR
   // GET SUM WITH CATEGORIES (DASH 1,2)
-  getSumWithCategoriesInPb(filter,onFinish){
+  getSumWithCategoriesInPb2(filter,onFinish){
     this._http.post(`${this.ROOT}${ReportedApi.API.GET_SUM_WITH_CATEGORIES_IN_PB}`, filter).subscribe(
       (data) => { this.execIfSuccess(data, onFinish) },
       (err) => { this.execIfError(err, onFinish) }
     )
+  }
+  async getSumWithCategoriesInPb(filter){
+    return await this._http.post(`${this.ROOT}${ReportedApi.API.GET_SUM_WITH_CATEGORIES_IN_PB}`, filter).toPromise()
   }
   getCountedAllHrInEachPB(filter,onFinish){
     this._http.post(`${this.ROOT}${ReportedApi.API.GET_COUNTED_ALL_HR_IN_EACH_PB}`, filter).subscribe(
@@ -54,6 +57,9 @@ export class ApiService {
       (data) => { this.execIfSuccess(data, onFinish) },
       (err) => { this.execIfError(err, onFinish) }
     )
+  }
+  async getSumCategoriesGroupedByMonth2(filter){
+    return await this._http.post(`${this.ROOT}${ReportedApi.API.GET_SUM_WITH_CATEGORIES_GROUPED_BY_MONTH}`, filter).toPromise()
   }
   getCountedHrGroupedByMonth(filter,onFinish){
     this._http.post(`${this.ROOT}${ReportedApi.API.GET_COUNTED_HR_GROUPED_BY_MONTH}`, filter).subscribe(
