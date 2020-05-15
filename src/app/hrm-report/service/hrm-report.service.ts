@@ -40,6 +40,9 @@ export class HrmReportService {
   //dash 6
   public sum:number=0
   public getpercentofeachpb;
+  //dash7
+  public getsumwithcategoriesinpbwithcuahang;
+  public getaverage;
   constructor() {
    };
   handlePercent(value1:number,value2:number):number{

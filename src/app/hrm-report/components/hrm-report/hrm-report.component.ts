@@ -17,13 +17,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   private messageSubscription: Subscription;
   
   public title:string="Tổng thu nhập"
- 
-  
-  //dash6
-  
-  //dash7
-  public getsumwithcategoriesinpbwithcuahang;
-  public getaverage;
+
   //dash8
   public getsumwithcategorieseachmonth=JSON.parse(JSON.stringify(multi2));
   //dash 9
@@ -31,7 +25,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public getsumwithcategorieseachnow;
   public getsumwithcategorieseachpast=single;
   //dash 10
-  public getpercentofeachmonth=JSON.parse(JSON.stringify(single));
+  public getpercentofeachmonth
   //dash 11
   public getaverageeachmonthnow:any[]=barChart;
   public getaverageeachmonthpast:any[]=lineChartSeries;
@@ -60,7 +54,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         "phongban":['Accounting', Validators.required],
         "cuahang":['', Validators.required],
         "manv":['NV01', Validators.required],
-        "hangmuc":['Tổng thu nhập', Validators.required],
+        "hangmuc":['Lương cơ bản', Validators.required],
       });
       this.hrmReportService.filter=filter;
       this.hrmReportService.years=nam;
@@ -127,22 +121,22 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     this.hrmReportService.getcountedallquitedhr=0;
     this.hrmReportService.sum=0;
      //dash1,2,8
-      this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
-        if(status){
-          //dash1
-          let data1a=JSON.parse(JSON.stringify(data))
-          let data2a=JSON.parse(JSON.stringify(data))
-          for (let i = 0; i < data1a.length; i++) {
-            this.hrmReportService.getsumwithcategoriesnow+=data1a[i].value
-          //hết dash1
-          //dash2  
-            if(data2a[i].name==thang){
-              this.hrmReportService.getsumwithmonthnow=data2a[i].value
-            }
-          }
-          //hết dash 2
-        }
-      }) 
+      // this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
+      //   if(status){
+      //     // //dash1
+      //     // let data1a=JSON.parse(JSON.stringify(data))
+      //     // let data2a=JSON.parse(JSON.stringify(data))
+      //     // for (let i = 0; i < data1a.length; i++) {
+      //     //   this.hrmReportService.getsumwithcategoriesnow+=data1a[i].value
+      //     // //hết dash1
+      //     // //dash2  
+      //     //   if(data2a[i].name==thang){
+      //     //     this.hrmReportService.getsumwithmonthnow=data2a[i].value
+      //     //   }
+      //     // }
+      //     // //hết dash 2
+      //   }
+      // }) 
       //dash 3
       this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
         if(status){
@@ -179,28 +173,28 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       }) 
       //hết dash 4
       //dash 5,6,7
-      this.handleDash4567({nam,thang,chinhanh,hangmuc})
+      this.handleDash567({nam,thang,chinhanh,hangmuc})
       this.handleDash128910({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       //hết dash 5,6,7
     nam--
     //and last year
    
-    this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
-      if(status){
-        let data1b=JSON.parse(JSON.stringify(data))
-        let data2b=JSON.parse(JSON.stringify(data))
-        for (let i = 0; i < data1b.length; i++) {
-          //dash 1
-          this.hrmReportService.getsumwithcategoriespast+=data1b[i].value
-          //hết dash 1
-          //dash 2
-          if(data2b[i].name==thang){
-            this.hrmReportService.getsumwithmonthpast=data2b[i].value
-          }
-          //hết dash2
-        }
-      }
-    }) 
+    // this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
+    //   if(status){
+    //     // let data1b=JSON.parse(JSON.stringify(data))
+    //     // let data2b=JSON.parse(JSON.stringify(data))
+    //     // for (let i = 0; i < data1b.length; i++) {
+    //     //   //dash 1
+    //     //   this.hrmReportService.getsumwithcategoriespast+=data1b[i].value
+    //     //   //hết dash 1
+    //     //   //dash 2
+    //     //   if(data2b[i].name==thang){
+    //     //     this.hrmReportService.getsumwithmonthpast=data2b[i].value
+    //     //   }
+    //     //   //hết dash2
+    //     // }
+    //   }
+    // }) 
      //dash 3
      this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
       if(status){
@@ -218,40 +212,60 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     this.subscription.unsubscribe();
     this.messageSubscription.unsubscribe();
   }
-  async handleDash4567(filter){
-      let dataFromApi=await
-      this.apiService.getSumWithCategoriesInPb(filter) 
-      //dash5
-      this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(dataFromApi)) 
-      //hết dash 5
-      //dash 6
-      let data6=JSON.parse(JSON.stringify(dataFromApi))
-      for (let i = 0; i < data6.length; i++) {
-        this.hrmReportService.sum+=data6[i].value
-      }
-      for (let i = 0; i <data6.length; i++) {
-        if(this.hrmReportService.sum!=0){
-          data6[i].value=this.hrmReportService.handlePercent(this.hrmReportService.sum,data6[i].value);
+  async handleDash567(filter){
+      let dataFromApi=await JSON.parse(JSON.stringify(this.apiService.getSumWithCategoriesInPb(filter)))
+      if(dataFromApi.length>0){
+        //dash5
+        this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(dataFromApi)) 
+        //hết dash 5
+        //dash 6
+        let data6=JSON.parse(JSON.stringify(dataFromApi))
+        for (let i = 0; i < data6.length; i++) {
+          this.hrmReportService.sum+=data6[i].value
         }
-      }
-      this.hrmReportService.getpercentofeachpb=data6
-      //hết dash 6
-      //dash 7
-      this.apiService.getCountedAllHrInEachPB(filter,(status,data)=>{
-        if(status){
-          let data7=JSON.parse(JSON.stringify(data))
-          for (let i = 0; i < data7.length; i++) {
-            data7[i].value=dataFromApi[i].value/data7[i].value
+        for (let i = 0; i <data6.length; i++) {
+          if(this.hrmReportService.sum!=0){
+            data6[i].value=this.hrmReportService.handlePercent(this.hrmReportService.sum,data6[i].value);
           }
-          this.getaverage=data7
         }
-      })
-      //hết dash 7
+        this.hrmReportService.getpercentofeachpb=data6
+        //hết dash 6
+        //dash 7
+        this.apiService.getCountedAllHrInEachPB(filter,(status,data)=>{
+          if(status){
+            let data7=JSON.parse(JSON.stringify(data))
+            if(data7.length>0){
+              for (let i = 0; i < data7.length; i++) {
+                data7[i].value=dataFromApi[i].value/data7[i].value
+              }
+              this.hrmReportService.getaverage=data7
+            }
+          }
+        })
+        //hết dash 7
+      }
+      if(dataFromApi.length==0){
+        this.hrmReportService.getpercentofeachpb=JSON.parse(JSON.stringify(single))
+        this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(single))
+        this.hrmReportService.getaverage=JSON.parse(JSON.stringify(single))
+      }
   }
   async handleDash128910(filter){
 
     let dataFromApi=JSON.parse(JSON.stringify(await this.apiService.getSumCategoriesGroupedByMonth2(filter)))
     if(dataFromApi.length>0){
+      //dash1
+      let data1a=JSON.parse(JSON.stringify(dataFromApi))
+      let data2a=JSON.parse(JSON.stringify(dataFromApi))
+      for (let i = 0; i < data1a.length; i++) {
+        this.hrmReportService.getsumwithcategoriesnow+=data1a[i].value
+      //hết dash1
+      //dash2  
+        if(data2a[i].name==thang){
+          this.hrmReportService.getsumwithmonthnow=data2a[i].value
+        }
+      }
+      //hết dash 2
       //dash 8
       let data8a=JSON.parse(JSON.stringify(dataFromApi))
       let data9a=JSON.parse(JSON.stringify(dataFromApi))
@@ -261,11 +275,24 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       this.getsumwithcategorieseachmonth[i].series[0].value=data8a[i].value
       }
       filter.nam--
-      let dataFromApi2= await JSON.parse(JSON.stringify(await this.apiService.getSumCategoriesGroupedByMonth2(filter)))
-      if(dataFromApi2.length>0){
+        let dataFromApi2= await JSON.parse(JSON.stringify(await this.apiService.getSumCategoriesGroupedByMonth2(filter)))
+        if(dataFromApi2.length>0){
+        let data1b=JSON.parse(JSON.stringify(dataFromApi2))
+        let data2b=JSON.parse(JSON.stringify(dataFromApi2))
+        for (let i = 0; i < data1b.length; i++) {
+          //dash 1
+          this.hrmReportService.getsumwithcategoriespast+=data1b[i].value
+          //hết dash 1
+          //dash 2
+          if(data2b[i].name==thang){
+            this.hrmReportService.getsumwithmonthpast=data2b[i].value
+          }
+          //hết dash2
+        }
         let data8b=JSON.parse(JSON.stringify(dataFromApi2))
         let data9b=JSON.parse(JSON.stringify(dataFromApi2))
         let data10b=JSON.parse(JSON.stringify(dataFromApi2))
+        //dash8
         for (let i = 0; i < this.getsumwithcategorieseachmonth.length; i++) {
             this.getsumwithcategorieseachmonth[i].series[1].name=filter.nam
             this.getsumwithcategorieseachmonth[i].series[1].value=data8b[i].value
@@ -283,10 +310,11 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       for (let i = 0; i < data10b.length; i++) {
         sumPast+=data10b[i].value
       }
-      // for (let i = 0; i < data10a.length; i++) {
-      //   this.getpercentofeachmonth[i].value=2
-      // }
-      this.getpercentofeachmonth=[...this.getpercentofeachmonth]
+      for (let i = 0; i < data10a.length; i++) {
+        data10a[i].value=(data10a[i].value/sumPast*100).toFixed(0)
+      }
+      console.log(data10a)
+      this.getpercentofeachmonth=data10a
       //Hết dash 10
       }
     }

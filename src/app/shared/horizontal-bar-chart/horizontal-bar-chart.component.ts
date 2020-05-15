@@ -14,7 +14,7 @@ export class HorizontalBarChartComponent implements OnInit {
   single: any[];
   multi: any[];
 
-  view: any[] = [360, 200];
+  view: any[] = [320, 200];
 
   // options
   showXAxis =false;

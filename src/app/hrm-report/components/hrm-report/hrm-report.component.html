@@ -147,7 +147,7 @@
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
         <div class="title">{{title}} trung bình </div>
-        <app-horizontal-bar-chart [receivedData]="getaverage"></app-horizontal-bar-chart>
+        <app-horizontal-bar-chart [receivedData]="hrmReportService.getaverage"></app-horizontal-bar-chart>
     </div>
 </div>
 <div class="w-100 flex flex-wrap mt2">
@@ -184,7 +184,7 @@
     </div>
     
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block2">
-        <div class="title">% tăng trưởng so với năm trước</div>
+        <div class="title">% tăng trưởng so với tháng trước trước năm {{hrmReportService.nam}}</div>
         <app-horizontal-bar-chart [receivedData]="getpercentofeachmonth"></app-horizontal-bar-chart>
     </div>
 </div>
