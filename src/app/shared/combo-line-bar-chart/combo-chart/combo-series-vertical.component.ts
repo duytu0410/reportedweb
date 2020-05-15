@@ -1,14 +1,24 @@
-import { Component, Input, Output, EventEmitter, OnChanges, ChangeDetectionStrategy } from '@angular/core';
-import { trigger, style, animate, transition } from '@angular/animations';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  ChangeDetectionStrategy
+ } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 import { formatLabel } from '@swimlane/ngx-charts';
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'g[ngx-combo-charts-series-vertical]',
   template: `
-    <svg:g
-      ngx-charts-bar
-      *ngFor="let bar of bars; trackBy: trackBy"
+    <svg:g ngx-charts-bar *ngFor="let bar of bars; trackBy: trackBy"
       [@animationState]="'active'"
       [width]="bar.width"
       [height]="bar.height"
@@ -30,8 +40,8 @@ import { formatLabel } from '@swimlane/ngx-charts';
       [tooltipDisabled]="tooltipDisabled"
       [tooltipPlacement]="'top'"
       [tooltipType]="'tooltip'"
-      [tooltipTitle]="bar.tooltipText"
-    ></svg:g>
+      [tooltipTitle]="bar.tooltipText">
+    </svg:g>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
@@ -39,14 +49,15 @@ import { formatLabel } from '@swimlane/ngx-charts';
       transition('* => void', [
         style({
           opacity: 1,
-          transform: '*'
+          transform: '*',
         }),
-        animate(500, style({ opacity: 0, transform: 'scale(0)' }))
+        animate(500, style({opacity: 0, transform: 'scale(0)'}))
       ])
     ])
   ]
 })
 export class ComboSeriesVerticalComponent implements OnChanges {
+
   @Input() dims;
   @Input() type = 'standard';
   @Input() series;
@@ -60,7 +71,7 @@ export class ComboSeriesVerticalComponent implements OnChanges {
   @Input() seriesName: string;
   @Input() animations: boolean = true;
   @Input() noBarWhenZero: boolean = true;
-
+  
   @Output() select = new EventEmitter();
   @Output() activate = new EventEmitter();
   @Output() deactivate = new EventEmitter();
@@ -88,6 +99,7 @@ export class ComboSeriesVerticalComponent implements OnChanges {
     }
 
     this.bars = this.series.map((d, index) => {
+
       let value = d.value;
       const label = d.name;
       const formattedLabel = formatLabel(label);
@@ -161,11 +173,12 @@ export class ComboSeriesVerticalComponent implements OnChanges {
       if (this.seriesName) {
         tooltipLabel = `${this.seriesName} • ${formattedLabel}`;
       }
-
+      
       this.getSeriesTooltips(this.seriesLine, index);
       const lineValue = this.seriesLine[0].series[index].value;
+      const lineName = this.seriesLine[0].series[index].name;
       bar.tooltipText = `
-        <span class="tooltip-label">${tooltipLabel}</span>
+        <span class="tooltip-label">${tooltipLabel }</span>
         <span class="tooltip-val"> Y1 - ${value.toLocaleString()} • Y2 - ${lineValue.toLocaleString()}%</span>
       `;
 
@@ -178,7 +191,7 @@ export class ComboSeriesVerticalComponent implements OnChanges {
     });
   }
   isActive(entry): boolean {
-    if (!this.activeEntries) return false;
+    if(!this.activeEntries) return false;
     const item = this.activeEntries.find(d => {
       return entry.name === d.name && entry.series === d.series;
     });
@@ -192,4 +205,5 @@ export class ComboSeriesVerticalComponent implements OnChanges {
   trackBy(index, bar): string {
     return bar.label;
   }
+
 }
