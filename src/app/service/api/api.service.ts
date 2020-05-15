@@ -67,6 +67,9 @@ export class ApiService {
       (err) => { this.execIfError(err, onFinish) }
     )
   }
+  async getCountedHrGroupedByMonth2(filter){
+    return await this._http.post(`${this.ROOT}${ReportedApi.API.GET_COUNTED_HR_GROUPED_BY_MONTH}`, filter).toPromise()
+  }
   getCountedAllNewHrGroupedByMonth(filter,onFinish){
     this._http.post(`${this.ROOT}${ReportedApi.API.GET_COUNTED_ALL_NEW_HR_GROUPED_BY_MONTH}`, filter).subscribe(
       (data) => { this.execIfSuccess(data, onFinish) },

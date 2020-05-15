@@ -43,6 +43,7 @@ export class HrmReportService {
   //dash7
   public getsumwithcategoriesinpbwithcuahang;
   public getaverage;
+  
   constructor() {
    };
   handlePercent(value1:number,value2:number):number{

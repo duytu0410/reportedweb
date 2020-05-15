@@ -401,54 +401,55 @@ export const lineChartSeries = [
   {
     name: 'Tổng thu nhập trung bình',
     series: [
-          {
+      {
       name: 'T1',
       value: 0
-    },
-      {
-        value: 0,
-        name: 'T2'
       },
       {
-        value: 0,
-        name: 'T3'
+        name: 'T2',
+        value: 0
       },
       {
-        value: 0,
-        name: 'T4'
+      name: 'T3',
+      value: 0
       },
       {
-        value: 0,
-        name: 'T5'
+        name: 'T4',
+        value: 0
       },
       {
-        value: 0,
-        name: 'T6'
+      name: 'T5',
+      value: 0
       },
       {
-        value: 0,
-        name: 'T7'
+        name: 'T6',
+        value: 0
       },
       {
-        value: 0,
-        name: 'T8'
+      name: 'T7',
+      value: 0
       },
       {
-        value: 0,
-        name: 'T9'
+        name: 'T8',
+        value: 0
       },
       {
-        value: 0,
-        name: 'T10'
+      name: 'T9',
+      value: 0
       },
       {
-        value: 0,
-        name: 'T11'
+        name: 'T10',
+        value: 0
       },
       {
-        value: 0,
-        name: 'T12'
-      }
+      name: 'T11',
+      value: 0
+      },
+      {
+        name: 'T12',
+        value: 0
+      },
+      
     ]
   }
 ];
@@ -498,7 +499,7 @@ export const barChart: any = [
     value: 0
   },
   {
-    name: 'T2',
+    name: 'T12',
     value: 0
   }
 ];
