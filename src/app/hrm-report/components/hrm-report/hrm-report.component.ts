@@ -199,9 +199,9 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           //hết dash 6
           //dash 7
           let data7=JSON.parse(JSON.stringify(data))
-          this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc},(status2,data)=>{
+          this.apiService.getCountedAllHrInEachPB({nam,thang,chinhanh,hangmuc},(status2,data2)=>{
             if(status2){
-              let data7a=JSON.parse(JSON.stringify(data))
+              let data7a=JSON.parse(JSON.stringify(data2))
                 for (let i = 0; i < data7a.length; i++) {
                     if(data7a[i].value&&data7[i].value){
                       data7a[i].value=data7[i].value/data[i].value
@@ -214,18 +214,6 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         }
       }) 
     
-      
-      //dash 7
-      this.apiService.getSumWithCategoriesInPb({nam,thang,chinhanh,hangmuc},(status,data)=>{
-        if(status){
-         
-            this.getsumwithcategoriesinpbwithcuahang=JSON.parse(JSON.stringify(data))
-              nam=JSON.parse(JSON.stringify(this.hrmReportService.body.nam))
-          
-        }
-      }) 
-      
-      //hết dash 7
     nam--
     //and last year
    
