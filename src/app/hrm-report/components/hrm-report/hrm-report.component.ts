@@ -164,7 +164,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       //   }
       // })
       //hết dash 3,14
-      //dash 4
+      // dash 4
       this.apiService.getCountedAllNewHrGroupedByMonth({nam,chinhanh,cuahang,phongban},(status,data)=>{
         if(status){
           let data4a=JSON.parse(JSON.stringify(data))
@@ -192,7 +192,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       this.handleDash128910({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash111213({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash314({nam,chinhanh,phongban,cuahang})
-      this.handleDash41516({nam,chinhanh,cuahang,phongban})
+      this.handleDash1516({nam,chinhanh,cuahang,phongban})
       //hết dash 5,6,7
     nam--
     //and last year
@@ -516,7 +516,8 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         this.getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
     }
   }
-  handleDash41516(filter){
+  handleDash1516(filter){
+    //dash15a
     this.apiService.getCountedAllNewHrGroupedByMonth(filter,(status,data)=>{
       if(status){
         let data15a=JSON.parse(JSON.stringify(data))
@@ -529,5 +530,47 @@ export class HrmReportComponent implements OnInit,OnDestroy {
 
       }
     }) 
+    //hết dash 15a
+    //dash 16a
+    this.apiService.getCountedAllQuitedHrGroupedByMonth(filter,(status,data)=>{
+      if(status){
+        let data16a=JSON.parse(JSON.stringify(data))
+        if(data16a.length>0){
+
+        }
+        if(data16a.length==0){
+          this.getallquitedhreachmonthnow=JSON.parse(JSON.stringify(barChart));
+        }
+      }
+    })
+    //hết dash 16a
+    filter.nam--
+    //dash 15b
+    this.apiService.getCountedAllNewHrGroupedByMonth(filter,(status,data)=>{
+      if(status){
+        let data15b=JSON.parse(JSON.stringify(data))
+        if(data15b.length>0){
+         
+        }
+        if(data15b.length==0){
+          this.getallnewhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
+        }
+
+      }
+    }) 
+    //hết dash 15b
+    //dash 16b
+    this.apiService.getCountedAllQuitedHrGroupedByMonth(filter,(status,data)=>{
+      if(status){
+        let data16b=JSON.parse(JSON.stringify(data))
+        if(data16b.length>0){
+
+        }
+        if(data16b.length==0){
+          this.getallquitedhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
+        }
+      }
+    })
+    //hết dash 16b
   }
 }
