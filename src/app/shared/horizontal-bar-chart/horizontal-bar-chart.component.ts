@@ -27,7 +27,7 @@ export class HorizontalBarChartComponent implements OnInit {
   yAxisLabel = 'Population';
   tooltipDisabled=false
   colorScheme = {
-    domain: ['#a5cca7','#deeaea', '#cde2ef','#90b39d','#d9889b','#f7dcd3', '#bdd6e8','#c3e6bc','#d6879b','#fdcec5','#7f9bb5']
+    domain: ['#f58730', '#44b7e7']
   };
 
   constructor(public bindingData:BindingDataToRouterService) {

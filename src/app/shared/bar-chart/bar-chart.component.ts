@@ -22,7 +22,7 @@ export class BarChartComponent implements OnInit {
   yAxisLabel = 'Population';
 
   colorScheme = {
-    domain: ['#f68979', '#fcbeb1', '#bedfb1', '#be4060','#e4d4c5','61a06d','#cfdfc6']
+    domain: ['#f58730', '#44b7e7']
   };
 
   constructor() {

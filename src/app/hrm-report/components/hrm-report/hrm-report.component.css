@@ -1,19 +1,31 @@
-
+h3,h4,h5{
+    color:#f58730
+}
 /* filter */
 section .filter{
     width: 100%;
     border-bottom:2px solid #666666;
     height: fit-content;
+    background-image: url(./../../../../assets/background.png);
+}
+
+section .filter h2{
+    color:#f58730;
+    font-weight: 600;
+}
+section .filter span{
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 section .filter .block{
     width:10rem;
     font-size: 0.8rem;
-    margin-top:1rem;
     flex-direction: column;
     margin-left:1rem;
 }
 section .block label{
     margin-bottom: 0.3rem!important;
+    font-weight: 600;
 }
 section .block select{
     width: 100%;
@@ -23,16 +35,32 @@ h3{
     color:rgb(0, 162, 255);
 }
 /* main */
+.main{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
 .main .block{
     border-top:1px solid #cbcbcb;
     border-left:1px solid #cbcbcb;
     border-bottom:1px solid #cbcbcb;
     position: relative;
     height: 12.5rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
 }
 .main .block .different{
     width: 100%;
     height: fit-content;
+    justify-content: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main .block .different .title{
+    display: flex;
     justify-content: center;
 }
 .main .block .level h3{
@@ -48,12 +76,10 @@ h3{
     font-weight: 600;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.now h5{
+.line h5{
     color: rgb(2, 2, 2);
 }
-.past h5{
-    color: rgb(2, 2, 2);
-}
+
 .stacked-chart{
     top:3.2rem;
     left:calc(20%-15px);
@@ -62,25 +88,27 @@ h3{
 }
 .title{
     font-size: 0.8rem;
- color: rgb(0, 162, 255);
+ color: rgb(0, 0, 0);
  margin-top:0.3rem;
+ font-weight: 600;
 }
 .triangle-up {
 	width: 0;
 	height: 0;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-bottom: 14px solid #06f812;
+	border-bottom: 14px solid #f58730;
 }
 .triangle-down {
 	width: 0;
 	height: 0;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-top: 14px solid #fa0303;
+	border-top: 14px solid #f58730;
 }
 .block2{
     border-top:1px solid #cbcbcb;
     border-left:1px solid #cbcbcb;
     border-bottom:1px solid #cbcbcb;
+    background-color: white;
 }

@@ -34,14 +34,14 @@ export class ComboLineBarChartComponent implements OnInit {
     name: 'coolthree',
     selectable: true,
     group: 'Ordinal',
-    domain: ['#f68979', '#fcbeb1', '#bedfb1', '#be4060']
+    domain: ['#f58730', '#44b7e7']
   };
 
   comboBarScheme = {
     name: 'singleLightBlue',
     selectable: true,
     group: 'Ordinal',
-    domain: ['#be4060']
+    domain: ['#44b7e7']
   };
 
   showRightYAxisLabel: boolean = true;

@@ -26,7 +26,7 @@ export class GroupedBarChartComponent implements OnInit {
   groupPadding:number=4;
   showDataLabel=false;
   colorScheme = {
-    domain: ['#7aa3e5', '#a8385d', '#AAAAAA']
+    domain: ['#f58730', '#44b7e7', '#AAAAAA']
   };
 
   constructor() {

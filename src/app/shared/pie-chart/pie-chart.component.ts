@@ -17,7 +17,7 @@ export class PieChartComponent implements OnInit {
   showLegend = false;
   explodeSlices=false;
   colorScheme = {
-    domain: ['#f68979', '#fcbeb1', '#bedfb1', '#be4060','#e4d4c5','61a06d','#cfdfc6']
+    domain: ['#f58730', '#44b7e7']
   };
   // pie
   showLabels = false;

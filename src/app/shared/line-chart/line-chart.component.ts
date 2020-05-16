@@ -23,7 +23,7 @@ export class LineChartComponent implements OnInit {
   timeline: boolean = false;
   tooltipDisabled:boolean=false;
   colorScheme = {
-    domain: ['#7f9bb5', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#f58730', '#44b7e7']
   };
 
   constructor() {

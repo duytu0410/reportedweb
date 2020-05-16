@@ -82,19 +82,13 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   }
   ngOnInit(): void {
    
-    // when filter button is clicked:
-  //   this.messageSubscription = this.bindingData.message.subscribe(m => {
-  //     if(m){
-        
-  //     }
-  // });
+
   }
   onSubmit(data){
     this.hrmReportService.body=JSON.parse(JSON.stringify(data));
     this.hrmReportService.nam=this.hrmReportService.body.nam;
     this.hrmReportService.thang=this.hrmReportService.body.thang;
     this.title=this.hrmReportService.body.hangmuc;
-    // this.getsumwithcategorieseachdifferent[0].name=this.title+" năm "+this.hrmReportService.nam+" và "+(this.hrmReportService.nam-1)
     let nam=this.hrmReportService.body.nam;
     let thang=Number(this.hrmReportService.body.thang);
     let chinhanh=this.hrmReportService.body.chinhanh;
@@ -119,51 +113,6 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     this.hrmReportService.getcountedallnewhr=0;
     this.hrmReportService.getcountedallquitedhr=0;
     this.hrmReportService.sum=0;
-   
-     //dash1,2,8
-      // this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
-      //   if(status){
-      //     // //dash1
-      //     // let data1a=JSON.parse(JSON.stringify(data))
-      //     // let data2a=JSON.parse(JSON.stringify(data))
-      //     // for (let i = 0; i < data1a.length; i++) {
-      //     //   this.hrmReportService.getsumwithcategoriesnow+=data1a[i].value
-      //     // //hết dash1
-      //     // //dash2  
-      //     //   if(data2a[i].name==thang){
-      //     //     this.hrmReportService.getsumwithmonthnow=data2a[i].value
-      //     //   }
-      //     // }
-      //     // //hết dash 2
-      //   }
-      // }) 
-      //dash 3,14
-      // this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
-      //   if(status){
-      //     //dash 3
-      //     // let data3a=JSON.parse(JSON.stringify(data))
-      //     // for (let i = 0; i< data3a.length; i++) {
-      //     //  if(data3a[i].name==this.hrmReportService.thang){
-      //     //    this.hrmReportService.getcountedhrminmonthnow=data3a[i].value
-      //     //  }
-      //     // }
-      //     //hết dash 3
-      //     // //dash 14
-      //     // let data14a=JSON.parse(JSON.stringify(data))
-      //     // if(data14a.length>0){
-      //     //   console.log(data14a)
-      //     //   for (let i = 0; i < data14a.length; i++) {
-      //     //     this.getcountedhreachmonth[i].series[0].name=this.hrmReportService.nam.toString()
-      //     //     this.getcountedhreachmonth[i].series[0].value=(data14a[i].value*100).toFixed()
-      //     //   }
-      //     //   this.getcountedhreachmonth=this.getcountedhreachmonth
-      //     // }
-      //     // if(data14a.length==0){
-      //     //   this.getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
-      //     // }
-      //   }
-      // })
-      //hết dash 3,14
       // dash 4
       this.apiService.getCountedAllNewHrGroupedByMonth({nam,chinhanh,cuahang,phongban},(status,data)=>{
         if(status){
@@ -187,59 +136,14 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         }
       }) 
       //hết dash 4
-      //dash 5,6,7
+      
       this.handleDash567({nam,thang,chinhanh,hangmuc})
       this.handleDash128910({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash111213({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash314({nam,chinhanh,phongban,cuahang})
       this.handleDash1516({nam,chinhanh,cuahang,phongban})
-      //hết dash 5,6,7
-    nam--
-    //and last year
-   
-    // this.apiService.getSumCategoriesGroupedByMonth({nam,chinhanh,phongban,cuahang,manv,hangmuc},(status,data)=>{
-    //   if(status){
-    //     // let data1b=JSON.parse(JSON.stringify(data))
-    //     // let data2b=JSON.parse(JSON.stringify(data))
-    //     // for (let i = 0; i < data1b.length; i++) {
-    //     //   //dash 1
-    //     //   this.hrmReportService.getsumwithcategoriespast+=data1b[i].value
-    //     //   //hết dash 1
-    //     //   //dash 2
-    //     //   if(data2b[i].name==thang){
-    //     //     this.hrmReportService.getsumwithmonthpast=data2b[i].value
-    //     //   }
-    //     //   //hết dash2
-    //     // }
-    //   }
-    // }) 
-     //dash 3,14
-     this.apiService.getCountedHrGroupedByMonth({nam,chinhanh,phongban,cuahang},(status,data)=>{
-      if(status){
-        //dash 3
-        // let data3b=JSON.parse(JSON.stringify(data))
-        // for (let i = 0; i< data3b.length; i++) {
-        //  if(data3b[i].name==this.hrmReportService.thang){
-        //    this.hrmReportService.getcountedhrminmonthpast=data3b[i].value
-        //  }
-        // }
-        //hết dash 3
-        //  //dash 14
-        //  let data14b=JSON.parse(JSON.stringify(data))
-        //  if(data14b.length>0){
-        //    for (let i = 0; i < data14b.length; i++) {
-        //      this.getcountedhreachmonth[i].series[1].name=(this.hrmReportService.nam-1).toString()
-        //      this.getcountedhreachmonth[i].series[1].value=(data14b[i].value*100).toFixed(0)
-        //    }
-        //    this.getcountedhreachmonth=[...this.getcountedhreachmonth]
-        //  }
-        //  if(data14b.length==0){
-        //    this.getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
-        //  }
-        //  //hết dash 14
-      }
-    })
-    //hết dash 3
+    
+  
   }
   ngOnDestroy(){
     this.subscription.unsubscribe();
@@ -308,24 +212,6 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       this.getsumwithcategorieseachmonth[i].series[0].value=data8a[i].value
       }
       //hết dash 8
-      // //dash 11
-      // let data11a=JSON.parse(JSON.stringify(dataFromApi))
-      // this.apiService.getCountedHrGroupedByMonth(filter,(status,data)=>{
-      //   if(status){
-      //     if(data.length>0){
-      //       let data11b=JSON.parse(JSON.stringify(data))
-      //       for (let i = 0; i < this.getaverageeachmonthnow.length; i++) {
-      //         data11a[i].value=(data11a[i].value/data11b[i].value).toFixed(0)
-      //       }
-      //       this.getaverageeachmonthnow=[...data11a]
-      //     }
-      //     if(data.length==0){
-      //       console.log("helo")
-      //       this.getaverageeachmonthnow=JSON.parse(JSON.stringify(barChart))
-      //     }
-      //   }
-      // })
-      // //hết dash 11
 
       filter.nam--
       let dataFromApi2= await JSON.parse(JSON.stringify(await this.apiService.getSumCategoriesGroupedByMonth2(filter)))
@@ -368,24 +254,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         }
         this.getpercentofeachmonth=data10a
         //Hết dash 10
-      //   //dash 11
-      //   let data11c=JSON.parse(JSON.stringify(dataFromApi2))
-      //   this.apiService.getCountedHrGroupedByMonth(filter,(status,data)=>{
-      //     if(status){
-      //       if(data.length>0){
-      //         let data11d=JSON.parse(JSON.stringify(data))
-      //         this.getaverageeachmonthpast[0].name=this.title+" trung bình"
-      //         for (let i = 0; i < this.getaverageeachmonthpast[0].series.length; i++) {
-      //           this.getaverageeachmonthpast[0].series[i].value=(data11c[i].value/data11d[i].value).toFixed(0)
-      //         }
-      //         this.getaverageeachmonthpast=[...this.getaverageeachmonthpast]
-      //       }
-      //       if(data.length==0){
-      //         this.getaverageeachmonthpast=JSON.parse(JSON.stringify(lineChartSeries))
-      //       }
-      //     }
-      //   })
-      // //hết dash 11
+     
       }
     }
     if(dataFromApi.length==0){
@@ -467,6 +336,8 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     if(dataFromApi.length==0){
       this.getaverageeachmonthnow=JSON.parse(JSON.stringify(barChart));
       this.getaverageeachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
+      this.getdifferentpercenteachmonth=JSON.parse(JSON.stringify(lineChart));
+      this.getdifferenteachmonth=JSON.parse(JSON.stringify(lineChart));
     }
    
   }
@@ -522,7 +393,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       if(status){
         let data15a=JSON.parse(JSON.stringify(data))
         if(data15a.length>0){
-         
+         this.getallnewhreachmonthnow=[...data15a]
         }
         if(data15a.length==0){
           this.getallnewhreachmonthnow=JSON.parse(JSON.stringify(barChart));
@@ -536,7 +407,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       if(status){
         let data16a=JSON.parse(JSON.stringify(data))
         if(data16a.length>0){
-
+          this.getallquitedhreachmonthnow=[...data16a]
         }
         if(data16a.length==0){
           this.getallquitedhreachmonthnow=JSON.parse(JSON.stringify(barChart));
@@ -550,7 +421,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       if(status){
         let data15b=JSON.parse(JSON.stringify(data))
         if(data15b.length>0){
-         
+          for (let i = 0; i < data15b.length; i++) {
+            this.getallnewhreachmonthpast[0].series[i].value=data15b[i].value
+          }
+          this.getallnewhreachmonthpast=[...this.getallnewhreachmonthpast]
         }
         if(data15b.length==0){
           this.getallnewhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
@@ -564,9 +438,12 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       if(status){
         let data16b=JSON.parse(JSON.stringify(data))
         if(data16b.length>0){
-
+          for (let i = 0; i < data16b.length; i++) {
+            this.getallquitedhreachmonthpast[0].series[i].value=data16b[i].value
+          }
+          this.getallquitedhreachmonthpast=[...this.getallquitedhreachmonthpast]
         }
-        if(data16b.length==0){
+        if(data16b.lengthd==0){
           this.getallquitedhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
         }
       }
