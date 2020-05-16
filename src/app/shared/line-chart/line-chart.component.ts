@@ -8,7 +8,7 @@ import {multi,lineChart} from '../../service/const/dataFromApi'
 export class LineChartComponent implements OnInit {
   @Input() receivedData
   lineChart: any[];
-  view: any[] = [300, 200];
+  view: any[] = [270, 200];
 
   // options
   legend: boolean =false;

@@ -10,6 +10,7 @@ export class HrmReportService {
   public years;
   public months;
   public filter;
+  public types;
   //biến cho các title
   public thang:number=1; 
   public nam:number=2020;

@@ -21,6 +21,8 @@ export class HrmReportComponent implements OnInit,OnDestroy {
 
   //dash8
   public getsumwithcategorieseachmonth=JSON.parse(JSON.stringify(multi2));
+  public table8now;
+  public table8past;
   //dash 9
   public getsumwithcategorieseachdifferent=JSON.parse(JSON.stringify(lineChart));
   //dash 10
@@ -58,6 +60,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       this.hrmReportService.filter=filter;
       this.hrmReportService.years=nam;
       this.hrmReportService.months=thang;
+      this.hrmReportService.types=hangmuc;
       this.apiService.getPhongBan((status,data)=>{
         if(status){
           this.hrmReportService.filter[1].view=data
@@ -96,9 +99,9 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     let cuahang=this.hrmReportService.body.cuahang;
     let hangmuc=this.hrmReportService.body.hangmuc;
     //chuyển hạng mục về đúng kiểu để gửi api
-    for (let i = 0; i < this.hrmReportService.filter[4].view.length; i++) {
-      if(hangmuc==this.hrmReportService.filter[4].view[i]){
-        hangmuc=this.hrmReportService.filter[4].value[i]
+    for (let i = 0; i < this.hrmReportService.types.view.length; i++) {
+      if(hangmuc==this.hrmReportService.types.view[i]){
+        hangmuc=this.hrmReportService.types.value[i]
      
       }
     }
@@ -136,7 +139,6 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         }
       }) 
       //hết dash 4
-   
       this.handleDash128910({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash111213({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash314({nam,chinhanh,phongban,cuahang})

@@ -8,7 +8,7 @@ import {multi} from '../../service/const/dataFromApi'
 export class GroupedBarChartComponent implements OnInit {
   @Input() receivedData
   multi: any[];
-  view: any[] = [400, 200];
+  view: any[] = [320, 300];
 
   // options
   showXAxis: boolean = false;
