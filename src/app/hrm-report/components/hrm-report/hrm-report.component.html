@@ -60,26 +60,31 @@
                     <h4 class="pl2" *ngIf="hrmReportService.getsumwithcategoriespast==0&&hrmReportService.getsumwithcategoriesnow!==0" style="color: #f58730;">100%</h4>
                     <h4 class="pl2 yellow" *ngIf="hrmReportService.getsumwithcategoriespast==hrmReportService.getsumwithcategoriesnow">0%</h4>
                 </div> -->
-                <div class="line w-100 flex flex-wrap w-100 justify-around  ">
+                <div class="line w-100 flex flex-wrap w-100 justify-around mt3 ">
                     <h5>Năm {{hrmReportService.nam}}</h5>
                     <h5 style="color:#f58730">{{hrmReportService.getsumwithcategoriesnow}}</h5>
                 </div>
-                <div class="line w-100 flex flex-wrap w-100 justify-around  ">
+                <div class="line w-100 flex flex-wrap w-100 justify-around">
                     <h5>Năm {{hrmReportService.nam-1}}</h5>
                     <h5 style="color:#f58730">{{hrmReportService.getsumwithcategoriespast}}</h5>
                 </div>
-                <div class="line w-100 flex flex-wrap w-100 justify-around  ">
+                <div class="line w-100 flex flex-wrap w-100 justify-around ">
                     <h5>Chênh lệch</h5>
                     <h5 style="color:#f58730"  *ngIf="(hrmReportService.getsumwithcategoriesnow-hrmReportService.getsumwithcategoriespast)>0">{{hrmReportService.getsumwithcategoriesnow-hrmReportService.getsumwithcategoriespast | currency:'VND'}}</h5>
-                    <h5 style="color:#f58730"  *ngIf="(hrmReportService.getsumwithcategoriespast-hrmReportService.getsumwithcategoriesnow)>0">{{hrmReportService.getsumwithcategoriespast-hrmReportService.getsumwithcategoriesnow | currency:'VND'}}</h5>
+                    <h5 style="color:#f58730"  *ngIf="(hrmReportService.getsumwithcategoriespast-hrmReportService.getsumwithcategoriesnow)>=0">{{hrmReportService.getsumwithcategoriespast-hrmReportService.getsumwithcategoriesnow | currency:'VND'}}</h5>
                 </div>
-                <div class="line w-100 flex flex-wrap w-100 justify-around  ">
+                <div class="line w-100 flex flex-wrap w-100 justify-around">
                     <h5>Tăng trưởng</h5>
-                    <h5 style="color:#f58730"  *ngIf="hrmReportService.getsumwithcategoriespast!==0&&hrmReportService.getsumwithcategoriesnow!==0&&hrmReportService.getsumwithcategoriesnow>hrmReportService.getsumwithcategoriespast">
-                        {{(hrmReportService.getsumwithcategoriesnow-hrmReportService.getsumwithcategoriespast)/(hrmReportService.getsumwithcategoriespast)*100 | number:'1.1-2'}}%</h5>
-                    <h5 style="color:#f58730"  *ngIf="hrmReportService.getsumwithcategoriespast!==0&&hrmReportService.getsumwithcategoriesnow!==0&&hrmReportService.getsumwithcategoriespast>hrmReportService.getsumwithcategoriesnow">
-                        {{(hrmReportService.getsumwithcategoriespast-hrmReportService.getsumwithcategoriesnow)/(hrmReportService.getsumwithcategoriespast)*100 | number:'1.1-2'}}%</h5>
-                    <h5 style="color:#f58730" ></h5>
+                    <h5 style="color:#f58730"  *ngIf="hrmReportService.getsumwithcategoriespast!==0&&hrmReportService.getsumwithcategoriesnow>hrmReportService.getsumwithcategoriespast">
+                        <div class="triangle-up"></div>
+                        {{(hrmReportService.getsumwithcategoriesnow-hrmReportService.getsumwithcategoriespast)/(hrmReportService.getsumwithcategoriespast)*100 | number:'1.1-2'}}%
+                    </h5>
+                    <h5 style="color:#f58730"  *ngIf="hrmReportService.getsumwithcategoriespast!==0&&hrmReportService.getsumwithcategoriespast>hrmReportService.getsumwithcategoriesnow">
+                        <div class="triangle-down"></div>
+                        {{(hrmReportService.getsumwithcategoriespast-hrmReportService.getsumwithcategoriesnow)/(hrmReportService.getsumwithcategoriespast)*100 | number:'1.1-2'}}%
+                    </h5>
+                    <h5 style="color:#f58730" *ngIf="hrmReportService.getsumwithcategoriespast==0&&hrmReportService.getsumwithcategoriesnow!==0">100%</h5>
+                    <h5 style="color:#f58730" *ngIf="hrmReportService.getsumwithcategoriespast==hrmReportService.getsumwithcategoriesnow">0%</h5>
                 </div>
             </div>
            
@@ -88,7 +93,7 @@
             <!-- <app-stacked-area-chart class="stacked-chart" [receivedData]="stackedAreaChart"></app-stacked-area-chart> -->
             <div class="different">
                 <div class="title">{{title}} tháng {{hrmReportService.thang}} năm {{hrmReportService.nam}} và năm {{hrmReportService.nam-1}}</div>
-                <div class="level flex flex-wrap w-100 justify-center">
+                <!-- <div class="level flex flex-wrap w-100 justify-center">
                     <h3 class="triangle-up pt1" *ngIf="hrmReportService.getsumwithmonthnow-hrmReportService.getsumwithmonthpast>0"></h3>
                     <h3 class="triangle-down pt1" *ngIf="hrmReportService.getsumwithmonthpast-hrmReportService.getsumwithmonthnow>0"></h3>
                     <h3 class="pl2" *ngIf="(hrmReportService.getsumwithmonthnow-hrmReportService.getsumwithmonthpast)>0" style="color:#f58730">{{hrmReportService.getsumwithmonthnow-hrmReportService.getsumwithmonthpast | currency:'VND'}}</h3>
@@ -101,14 +106,32 @@
                     <h4 class="pl2 " *ngIf="hrmReportService.getsumwithmonthpast!==0&&hrmReportService.getsumwithmonthnow!==0&&hrmReportService.getsumwithmonthpast>hrmReportService.getsumwithmonthnow" style="color:#f58730">{{(hrmReportService.getsumwithmonthpast-hrmReportService.getsumwithmonthnow)/(hrmReportService.getsumwithmonthpast)*100 | number:'1.1-2'}}%</h4>
                     <h4 class="pl2" *ngIf="hrmReportService.getsumwithmonthpast==0&&hrmReportService.getsumwithmonthnow!==0" style="color:#f58730">100%</h4>
                     <h4 class="pl2 yellow" *ngIf="hrmReportService.getsumwithmonthpast==hrmReportService.getsumwithmonthnow">0%</h4>
-                </div>
-                <div class="now w-100 flex flex-wrap w-100 justify-around  ">
+                </div> -->
+                <div class="now w-100 flex flex-wrap w-100 justify-around mt3 ">
                     <h5>Năm {{hrmReportService.nam}}</h5>
                     <h5 style="color:#f58730">{{hrmReportService.getsumwithmonthnow}}</h5>
                 </div>
                 <div class="past w-100 flex flex-wrap w-100 justify-around  ">
                     <h5>Năm {{hrmReportService.nam-1}}</h5>
                     <h5 style="color:#f58730">{{hrmReportService.getsumwithmonthpast}}</h5>
+                </div>
+                <div class="line w-100 flex flex-wrap w-100 justify-around ">
+                    <h5>Chênh lệch</h5>
+                    <h5 style="color:#f58730"  *ngIf="(hrmReportService.getsumwithmonthnow-hrmReportService.getsumwithmonthpast)>0">{{hrmReportService.getsumwithmonthnow-hrmReportService.getsumwithmonthpast | currency:'VND'}}</h5>
+                    <h5 style="color:#f58730"  *ngIf="(hrmReportService.getsumwithmonthpast-hrmReportService.getsumwithmonthnow)>=0">{{hrmReportService.getsumwithmonthpast-hrmReportService.getsumwithmonthnow | currency:'VND'}}</h5>
+                </div>
+                <div class="line w-100 flex flex-wrap w-100 justify-around">
+                    <h5>Tăng trưởng</h5>
+                    <h5 style="color:#f58730" *ngIf="hrmReportService.getsumwithmonthpast!==0&&hrmReportService.getsumwithmonthnow>hrmReportService.getsumwithmonthpast">
+                        <div class="triangle-up"></div>
+                        {{(hrmReportService.getsumwithmonthnow-hrmReportService.getsumwithmonthpast)/(hrmReportService.getsumwithmonthpast)*100 | number:'1.1-2'}}%
+                    </h5>
+                    <h5 style="color:#f58730" *ngIf="hrmReportService.getsumwithmonthpast!==0&&hrmReportService.getsumwithmonthpast>hrmReportService.getsumwithmonthnow">
+                        <div class="triangle-down"></div>
+                        {{(hrmReportService.getsumwithmonthpast-hrmReportService.getsumwithmonthnow)/(hrmReportService.getsumwithmonthpast)*100 | number:'1.1-2'}}%
+                    </h5>
+                    <h5 style="color:#f58730" *ngIf="hrmReportService.getsumwithmonthpast==0&&hrmReportService.getsumwithmonthnow!==0">100%</h5>
+                    <h5 style="color:#f58730" *ngIf="hrmReportService.getsumwithmonthpast==hrmReportService.getsumwithmonthnow">0%</h5>
                 </div>
             </div>
            
@@ -117,7 +140,7 @@
             <!-- <app-stacked-area-chart class="stacked-chart"></app-stacked-area-chart> -->
             <div class="different">
                 <div class="title">Số lượng nhân sự tháng {{hrmReportService.thang}} năm {{hrmReportService.nam}} và {{hrmReportService.nam-1}}</div>
-                <div class="level flex flex-wrap w-100 justify-center">
+                <!-- <div class="level flex flex-wrap w-100 justify-center">
                     <h3 class="triangle-up pt1" *ngIf="hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast>0"></h3>
                     <h3 class="triangle-down pt1" *ngIf="hrmReportService.getcountedhrminmonthpast-hrmReportService.getcountedhrminmonthnow>0"></h3>
                     <h3 class="pl2" *ngIf="(hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast)>0" style="color: #06f812;">{{hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast}} người</h3>
@@ -126,7 +149,7 @@
                 <div class="percent flex flex-wrap w-100 justify-center">
                     <h4 class="triangle-up pt1" *ngIf="hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast>0"></h4>
                     <h4 class="triangle-down pt1" *ngIf="hrmReportService.getcountedhrminmonthpast-hrmReportService.getcountedhrminmonthnow>0"></h4>
-                    <h4 class="pl2 " *ngIf="hrmReportService.getcountedhrminmonthpast!==0&&hrmReportService.getcountedhrminmonthnow!==0&&hrmReportService.getcountedhrminmonthnow>hrmReportService.getcountedhrminmonthpast" style="color: #06f812;">{{hrmReportService.handlePercent(hrmReportService.getcountedhrminmonthpast,hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast)}}%</h4>
+                    <h4 class="pl2 " *ngIf="hrmReportService.getcountedhrminmonthpast!==0&&hrmReportService.getcountedhrminmonthnow>hrmReportService.getcountedhrminmonthpast" style="color: #06f812;">{{hrmReportService.handlePercent(hrmReportService.getcountedhrminmonthpast,hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast)}}%</h4>
                     <h4 class="pl2 " *ngIf="hrmReportService.getcountedhrminmonthpast!==0&&hrmReportService.getcountedhrminmonthnow!==0&&hrmReportService.getcountedhrminmonthpast>hrmReportService.getcountedhrminmonthnow" style="color: #fa0303;">{{hrmReportService.handlePercent(hrmReportService.getcountedhrminmonthpast,hrmReportService.getcountedhrminmonthpast-hrmReportService.getcountedhrminmonthnow)}}%</h4>
                     <h4 class="pl2" *ngIf="hrmReportService.getcountedhrminmonthpast==0&&hrmReportService.getcountedhrminmonthnow!==0" style="color: #06f812;">100%</h4>
                     <h4 class="pl2 yellow" *ngIf="hrmReportService.getcountedhrminmonthpast==hrmReportService.getcountedhrminmonthnow">0%</h4>
@@ -138,6 +161,41 @@
                 <div class="past w-100 flex flex-wrap w-100 justify-around  ">
                     <h5>Năm {{hrmReportService.nam-1}}</h5>
                     <h5 style="color:#f58730">{{hrmReportService.getcountedhrminmonthpast}} người</h5>
+                </div> -->
+                <div class="content w-100 justify-between flex flex-wrap mt4">
+                    <div class="w-25">
+                        <h5 class="line1" style="color:#f58730" *ngIf="hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast>=0">
+                            <div class="triangle-up"></div>
+                            {{hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast}} người
+                        </h5>
+                        <h5 class="line1" style="color:#f58730" *ngIf="(hrmReportService.getcountedhrminmonthpast-hrmReportService.getcountedhrminmonthnow)>0">
+                            <div class="triangle-down"></div>
+                            {{hrmReportService.getcountedhrminmonthpast-hrmReportService.getcountedhrminmonthnow}} người
+                        </h5>
+                        <h5 class="line2">{{hrmReportService.thang}}/{{hrmReportService.nam}}</h5>
+                        <h5 class="line3">{{hrmReportService.getcountedhrminmonthnow}}</h5>
+                    </div>
+                    <div class="w-40 flex justify-center mt4">
+                        <img src="./../../../../assets/Icon-01.png" alt="" style="width: 5rem;height:4.5rem">
+                    </div>
+                    <div class="w-25">
+                        <h5 class="line1" style="color:#f58730" *ngIf="hrmReportService.getcountedhrminmonthpast!==0&&hrmReportService.getcountedhrminmonthnow>hrmReportService.getcountedhrminmonthpast">
+                            <div class="triangle-up"></div>
+                            {{hrmReportService.handlePercent(hrmReportService.getcountedhrminmonthpast,hrmReportService.getcountedhrminmonthnow-hrmReportService.getcountedhrminmonthpast)}}%
+                        </h5>
+                        <h5 class="line1" style="color:#f58730" *ngIf="hrmReportService.getcountedhrminmonthnow!==0&&hrmReportService.getcountedhrminmonthpast>hrmReportService.getcountedhrminmonthnow">
+                            <div class="triangle-down"></div>
+                            {{hrmReportService.handlePercent(hrmReportService.getcountedhrminmonthpast,hrmReportService.getcountedhrminmonthpast-hrmReportService.getcountedhrminmonthnow)}}%
+                        </h5>
+                        <h5 class="line1" style="color:#f58730" *ngIf="hrmReportService.getcountedhrminmonthpast==0&&hrmReportService.getcountedhrminmonthnow!==0">
+                        100%
+                        </h5>
+                        <h5 class="line1" style="color:#f58730" *ngIf="hrmReportService.getcountedhrminmonthpast==hrmReportService.getcountedhrminmonthnow">
+                        0%
+                        </h5>
+                        <h5 class="line2">{{hrmReportService.thang}}/{{hrmReportService.nam-1}}</h5>
+                        <h5 class="line3">{{hrmReportService.getcountedhrminmonthpast}}</h5>
+                    </div>
                 </div>
             </div> 
         </div>
@@ -145,9 +203,23 @@
             <!-- <app-stacked-area-chart class="stacked-chart"></app-stacked-area-chart> -->
             <div class="different">
                 <div class="title">Số lượng nhân sự tăng, giảm tháng {{hrmReportService.thang}} năm {{hrmReportService.nam}}</div>
-                <div class="percent flex flex-wrap w-100 justify-center">
+                <!-- <div class="percent flex flex-wrap w-100 justify-center">
                     <h4 class="pl2" style="color: #f58730;">Tăng {{hrmReportService.getcountedallnewhr}} người</h4>
                     <h4 class="pl2" style="color: #f58730;">Giảm {{hrmReportService.getcountedallquitedhr}} người</h4>
+                </div> -->
+                <div class="content w-100 justify-between flex flex-wrap mt5">
+                    <div class="w-25">
+                        <h5 class="line2">Tăng</h5>
+                        <h5 class="line3">{{hrmReportService.getcountedallnewhr}} người</h5>
+                    </div>
+                    <div class="w-40 flex justify-center">
+                        <img src="./../../../../assets/Icon-02.png" alt="" style="width: 5rem;height:4.5rem">
+                    </div>
+                    <div class="w-25">
+                       
+                        <h5 class="line2">Giảm</h5>
+                        <h5 class="line3">{{hrmReportService.getcountedallquitedhr}} người</h5>
+                    </div>
                 </div>
             </div> 
         </div>

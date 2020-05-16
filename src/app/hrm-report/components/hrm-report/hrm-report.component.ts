@@ -136,13 +136,12 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         }
       }) 
       //hết dash 4
-      
-      this.handleDash567({nam,thang,chinhanh,hangmuc})
+   
       this.handleDash128910({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash111213({nam,chinhanh,phongban,cuahang,manv,hangmuc})
       this.handleDash314({nam,chinhanh,phongban,cuahang})
       this.handleDash1516({nam,chinhanh,cuahang,phongban})
-    
+      this.handleDash567({nam,thang,chinhanh,hangmuc})
   
   }
   ngOnDestroy(){
@@ -150,42 +149,85 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     this.messageSubscription.unsubscribe();
   }
   async handleDash567(filter){
-      let dataFromApi=await JSON.parse(JSON.stringify(this.apiService.getSumWithCategoriesInPb(filter)))
-      if(dataFromApi.length>0){
-        //dash5
-        this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(dataFromApi)) 
-        //hết dash 5
-        //dash 6
-        let data6=JSON.parse(JSON.stringify(dataFromApi))
-        for (let i = 0; i < data6.length; i++) {
-          this.hrmReportService.sum+=data6[i].value
-        }
-        for (let i = 0; i <data6.length; i++) {
-          if(this.hrmReportService.sum!=0){
-            data6[i].value=this.hrmReportService.handlePercent(this.hrmReportService.sum,data6[i].value);
-          }
-        }
-        this.hrmReportService.getpercentofeachpb=data6
-        //hết dash 6
-        //dash 7
-        this.apiService.getCountedAllHrInEachPB(filter,(status,data)=>{
-          if(status){
-            let data7=JSON.parse(JSON.stringify(data))
-            if(data7.length>0){
-              for (let i = 0; i < data7.length; i++) {
-                data7[i].value=(dataFromApi[i].value/data7[i].value).toFixed(0)
-              }
-              this.hrmReportService.getaverage=data7
+      this.apiService.getSumWithCategoriesInPb(filter,(status,data)=>{
+        if(status){
+          //dash 5
+          if(data.length>0){
+            let data5a=JSON.parse(JSON.stringify(data))
+            this.hrmReportService.getsumwithcategoriesinpb=data5a
+            //hết dash5
+            //dash 6
+            let data6=JSON.parse(JSON.stringify(data))
+            for (let i = 0; i < data6.length; i++) {
+              this.hrmReportService.sum+=data6[i].value
             }
+            for (let i = 0; i <data6.length; i++) {
+              if(this.hrmReportService.sum!=0){
+                data6[i].value=this.hrmReportService.handlePercent(this.hrmReportService.sum,data6[i].value);
+              }
+            }
+            this.hrmReportService.getpercentofeachpb=data6
+            //hết dash 6
+            //dash 7
+            let data7a=JSON.parse(JSON.stringify(data))
+            this.apiService.getCountedAllHrInEachPB(filter,(status,data2)=>{
+              if(status){
+                let data7b=JSON.parse(JSON.stringify(data2))
+                if(data7a.length>0){
+                  for (let i = 0; i < data7a.length; i++) {
+                    data7a[i].value=(data7a[i].value/data7b[i].value).toFixed(0)
+                  }
+                  this.hrmReportService.getaverage=data7a
+                }
+              }
+            })
+            //hết dash 7
           }
-        })
-        //hết dash 7
-      }
-      if(dataFromApi.length==0){
-        this.hrmReportService.getpercentofeachpb=JSON.parse(JSON.stringify(single))
-        this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(single))
-        this.hrmReportService.getaverage=JSON.parse(JSON.stringify(single))
-      }
+          if(data.length==0){
+            this.hrmReportService.getpercentofeachpb=JSON.parse(JSON.stringify(single))
+            this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(single))
+            this.hrmReportService.getaverage=JSON.parse(JSON.stringify(single))
+          }
+         
+        }
+      })
+      // let dataFromApi=await JSON.parse(JSON.stringify(this.apiService.getSumWithCategoriesInPb2(filter)))
+      // console.log(dataFromApi)
+      // if(dataFromApi.length>0){
+      //   //dash5
+      //   this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(dataFromApi)) 
+      //   //hết dash 5
+      //   //dash 6
+      //   let data6=JSON.parse(JSON.stringify(dataFromApi))
+      //   for (let i = 0; i < data6.length; i++) {
+      //     this.hrmReportService.sum+=data6[i].value
+      //   }
+      //   for (let i = 0; i <data6.length; i++) {
+      //     if(this.hrmReportService.sum!=0){
+      //       data6[i].value=this.hrmReportService.handlePercent(this.hrmReportService.sum,data6[i].value);
+      //     }
+      //   }
+      //   this.hrmReportService.getpercentofeachpb=data6
+      //   //hết dash 6
+      //   //dash 7
+      //   this.apiService.getCountedAllHrInEachPB(filter,(status,data)=>{
+      //     if(status){
+      //       let data7=JSON.parse(JSON.stringify(data))
+      //       if(data7.length>0){
+      //         for (let i = 0; i < data7.length; i++) {
+      //           data7[i].value=(data[i].value/data7[i].value).toFixed(0)
+      //         }
+      //         this.hrmReportService.getaverage=data7
+      //       }
+      //     }
+      //   })
+      //   //hết dash 7
+      // }
+      // if(dataFromApi.length==0){
+      //   this.hrmReportService.getpercentofeachpb=JSON.parse(JSON.stringify(single))
+      //   this.hrmReportService.getsumwithcategoriesinpb=JSON.parse(JSON.stringify(single))
+      //   this.hrmReportService.getaverage=JSON.parse(JSON.stringify(single))
+      // }
   }
   async handleDash128910(filter){
 
@@ -198,7 +240,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
         this.hrmReportService.getsumwithcategoriesnow+=data1a[i].value
       //hết dash1
       //dash2  
-        if(data2a[i].name==thang){
+        if(data2a[i].name==this.hrmReportService.thang){
           this.hrmReportService.getsumwithmonthnow=data2a[i].value
         }
       }
@@ -223,7 +265,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           this.hrmReportService.getsumwithcategoriespast+=data1b[i].value
           //hết dash 1
           //dash 2
-          if(data2b[i].name==thang){
+          if(data2b[i].name==this.hrmReportService.thang){
             this.hrmReportService.getsumwithmonthpast=data2b[i].value
           }
           //hết dash2

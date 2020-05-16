@@ -37,13 +37,13 @@ export class ApiService {
   }
   //HR
   // GET SUM WITH CATEGORIES (DASH 1,2)
-  getSumWithCategoriesInPb2(filter,onFinish){
+  getSumWithCategoriesInPb(filter,onFinish){
     this._http.post(`${this.ROOT}${ReportedApi.API.GET_SUM_WITH_CATEGORIES_IN_PB}`, filter).subscribe(
       (data) => { this.execIfSuccess(data, onFinish) },
       (err) => { this.execIfError(err, onFinish) }
     )
   }
-  async getSumWithCategoriesInPb(filter){
+  async getSumWithCategoriesInPb2(filter){
     return await this._http.post(`${this.ROOT}${ReportedApi.API.GET_SUM_WITH_CATEGORIES_IN_PB}`, filter).toPromise()
   }
   getCountedAllHrInEachPB(filter,onFinish){

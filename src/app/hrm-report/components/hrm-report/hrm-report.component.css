@@ -1,5 +1,5 @@
-h3,h4,h5{
-    color:#f58730
+h5{
+    display:flex;
 }
 /* filter */
 section .filter{
@@ -52,7 +52,7 @@ h3{
 }
 .main .block .different{
     width: 100%;
-    height: fit-content;
+    height: 12.5rem;
     justify-content: center;
     background-color: white;
     display: flex;
@@ -62,6 +62,23 @@ h3{
 .main .block .different .title{
     display: flex;
     justify-content: center;
+}
+
+.main .block .different .content .line2{
+    background-color:#f58730 ;
+    width:4rem;
+    height: 1.6rem;
+    display: flex;
+    justify-content: center;
+   align-items: center;
+}
+.main .block .different .content .line3{
+    background-color:#cbcbcb ;
+    width:4rem;
+    height: 1.6rem;
+    display: flex;
+    justify-content: center;
+   align-items: center;
 }
 .main .block .level h3{
     text-align: center;
@@ -95,16 +112,20 @@ h3{
 .triangle-up {
 	width: 0;
 	height: 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-bottom: 14px solid #f58730;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    border-bottom: 10px solid #f58730;
+    margin-top: 0.3rem;
+    margin-right: 0.4rem;
 }
 .triangle-down {
 	width: 0;
 	height: 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-top: 14px solid #f58730;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+    border-top: 10px solid #f58730;
+    margin-top: 0.3rem;
+    margin-right: 0.4rem;
 }
 .block2{
     border-top:1px solid #cbcbcb;
