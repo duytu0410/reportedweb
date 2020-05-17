@@ -322,7 +322,7 @@
         <div class="title">Số lượng nhân sự</div>
         <div class="flex flex-wrap">
             <app-grouped-bar-chart [receivedData]="getcountedhreachmonth" [receivedSize]="sizeChart14"></app-grouped-bar-chart>
-            <table class="table" >
+            <table class="table">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">T</th>
@@ -331,7 +331,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of getsumwithcategorieseachmonth">
+                  <tr *ngFor="let item of getcountedhreachmonth">
                     <th scope="row">{{item.name}}</th>
                     <td>{{item.series[0].value}}</td>
                     <td>{{item.series[1].value}}</td>

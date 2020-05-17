@@ -39,15 +39,15 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public sizeChart13=[230,300]
   //dash 14
   public getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
-  public sizeChart14=[180,300]
+  public sizeChart14=[260,300]
   //dash 15
   public getallnewhreachmonthnow=JSON.parse(JSON.stringify(barChart));
   public getallnewhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
-  public sizeChart15=[230,300]
+  public sizeChart15=[250,300]
   //dash 16
   public getallquitedhreachmonthnow=JSON.parse(JSON.stringify(barChart));
   public getallquitedhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
-  public sizeChart16=[230,300]
+  public sizeChart16=[250,300]
   constructor(
     public bindingData:BindingDataToRouterService,
     public apiService:ApiService,
@@ -429,10 +429,12 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       }
       //hết dash 3
       if(dataFromApi2.length==0){
+        this.hrmReportService.getcountedhrminmonthpast=0
         this.getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
       }
     }
     if(dataFromApi.length==0){
+        this.hrmReportService.getcountedhrminmonthnow=0
         this.getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
     }
   }
