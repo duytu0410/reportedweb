@@ -5,14 +5,15 @@ import {multi} from '../../service/const/dataFromApi'
   templateUrl: './grouped-bar-chart.component.html',
   styleUrls: ['./grouped-bar-chart.component.css']
 })
-export class GroupedBarChartComponent implements OnInit {
+export class GroupedBarChartComponent implements OnInit{
   @Input() receivedData
+  @Input() receivedSize
   multi: any[];
-  view: any[] = [320, 300];
+  view: any[] = [300, 300];
 
   // options
   showXAxis: boolean = false;
-  showYAxis: boolean =true;
+  showYAxis: boolean =false;
   gradient: boolean = false;
   showLegend: boolean = false;
   showXAxisLabel: boolean = false;

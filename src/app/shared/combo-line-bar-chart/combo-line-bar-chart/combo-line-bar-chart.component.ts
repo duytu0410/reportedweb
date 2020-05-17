@@ -8,13 +8,14 @@ import {barChart,lineChartSeries} from '../../../service/const/dataFromApi'
 export class ComboLineBarChartComponent implements OnInit {
     @Input() receivedData
     @Input() receivedData2
+    @Input() receivedSize
   constructor() { }
   ngOnInit(): void {
     
   }
   view = [350,300];
   showXAxis =false;
-  showYAxis = true;
+  showYAxis = false;
   gradient = false;
   showLegend = false;
   legendTitle = 'Legend';
@@ -44,7 +45,7 @@ export class ComboLineBarChartComponent implements OnInit {
     domain: ['#44b7e7']
   };
 
-  showRightYAxisLabel: boolean = true;
+  showRightYAxisLabel: boolean =false;
   yAxisLabelRight: string = 'Utilization';
 }
 

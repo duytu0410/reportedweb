@@ -7,6 +7,7 @@ import {multi,lineChart} from '../../service/const/dataFromApi'
 })
 export class LineChartComponent implements OnInit {
   @Input() receivedData
+  @Input() receivedSize
   lineChart: any[];
   view: any[] = [270, 200];
 
@@ -15,7 +16,7 @@ export class LineChartComponent implements OnInit {
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean =false;
-  yAxis: boolean = true;
+  yAxis: boolean = false;
   showYAxisLabel: boolean = false;
   showXAxisLabel: boolean = false;
   xAxisLabel: string = 'Year';

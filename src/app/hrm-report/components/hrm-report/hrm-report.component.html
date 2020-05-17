@@ -201,12 +201,12 @@
     
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 block2">
         <div class="title">{{title}}</div>
-        <div class="flex">
-            <app-grouped-bar-chart [receivedData]="getsumwithcategorieseachmonth"></app-grouped-bar-chart>
+        <div class="flex-wrap flex ">
+            <app-grouped-bar-chart [receivedData]="getsumwithcategorieseachmonth" [receivedSize]="sizeChart8"></app-grouped-bar-chart>
             <table class="table">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Tháng</th>
+                    <th scope="col" >Tháng</th>
                     <th scope="col">{{hrmReportService.nam}}</th>
                     <th scope="col">{{hrmReportService.nam-1}}</th>
                   </tr>
@@ -225,21 +225,23 @@
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2">
         <div class="title">Chênh lệch {{title}} {{hrmReportService.nam-1}} và {{hrmReportService.nam}}</div>
-        <app-line-chart [receivedData]="getsumwithcategorieseachdifferent"></app-line-chart>
-        <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Tháng</th>
-                <th scope="col">Chênh lệch</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of getsumwithcategorieseachdifferent[0].series">
-                <th scope="row">{{item.name}}</th>
-                <td>{{item.value}}</td>
-              </tr>
-            </tbody>
-        </table>
+        <div class="flex flex-wrap">
+            <app-line-chart [receivedData]="getsumwithcategorieseachdifferent" [receivedSize]="sizeChart9"></app-line-chart>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Tháng</th>
+                    <th scope="col">Chênh lệch</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of getsumwithcategorieseachdifferent[0].series">
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.value}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div> 
     </div>
     
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block2">
@@ -249,35 +251,139 @@
 </div>
 <div class="w-100 flex flex-wrap mt3">
     
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 block2 ">
         <div class="title">{{title}} trung bình</div>
-        <app-combo-line-bar-chart [receivedData]="getaverageeachmonthnow" [receivedData2]="getaverageeachmonthpast"></app-combo-line-bar-chart>
+        <div class="flex flex-wrap">
+            <app-combo-line-bar-chart [receivedData]="getaverageeachmonthnow" [receivedData2]="getaverageeachmonthpast" [receivedSize]="sizeChart11"></app-combo-line-bar-chart>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Tháng</th>
+                    <th scope="col">{{hrmReportService.nam}}</th>
+                    <th scope="col">{{hrmReportService.nam-1}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of getaverageeachmonthnow;let i = index">
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.value}}</td>
+                    <td>{{getaverageeachmonthpast[0].series[i].value}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block2 ">
         <div class="title">Tăng trưởng so với tháng trước năm {{hrmReportService.nam}}</div>
-        <app-line-chart [receivedData]="getdifferenteachmonth"></app-line-chart>
+        <div class="flex-wrap flex ">
+            <app-line-chart [receivedData]="getdifferenteachmonth" [receivedSize]="sizeChart12"></app-line-chart>
+            <table class="table" style="width:min-content;">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Tháng</th>
+                    <th scope="col">Chênh lệch</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of getdifferenteachmonth[0].series">
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.value}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
         <div class="title">% tăng trưởng so với tháng trước năm {{hrmReportService.nam}}</div>
-        <app-line-chart [receivedData]="getdifferentpercenteachmonth"></app-line-chart>
+        <div class="flex flex-wrap">
+            <app-line-chart [receivedData]="getdifferentpercenteachmonth" [receivedSize]="sizeChart13"></app-line-chart>
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Tháng</th>
+                    <th scope="col">% Tăng trưởng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of getdifferentpercenteachmonth[0].series">
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.value}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <div class="w-100 flex flex-wrap mt3">
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
         <div class="title">Số lượng nhân sự</div>
-        <app-grouped-bar-chart [receivedData]="getcountedhreachmonth"></app-grouped-bar-chart>
+        <div class="flex flex-wrap">
+            <app-grouped-bar-chart [receivedData]="getcountedhreachmonth" [receivedSize]="sizeChart14"></app-grouped-bar-chart>
+            <table class="table" >
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">T</th>
+                    <th scope="col">{{hrmReportService.nam}}</th>
+                    <th scope="col">{{hrmReportService.nam-1}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of getsumwithcategorieseachmonth">
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.series[0].value}}</td>
+                    <td>{{item.series[1].value}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
         <div class="title">Số lượng nhân sự tăng</div>
-        <app-combo-line-bar-chart [receivedData]="getallnewhreachmonthnow" [receivedData2]="getallnewhreachmonthpast"></app-combo-line-bar-chart>
+        <div class="flex flex-wrap">
+            <app-combo-line-bar-chart [receivedData]="getallnewhreachmonthnow" [receivedData2]="getallnewhreachmonthpast" [receivedSize]="sizeChart15"></app-combo-line-bar-chart>
+            <table class="table" style="width: min-content;">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">T</th>
+                    <th scope="col">{{hrmReportService.nam}}</th>
+                    <th scope="col">{{hrmReportService.nam-1}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of getallnewhreachmonthnow;let i=index">
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.value}}</td>
+                    <td>{{getallnewhreachmonthpast[0].series[i].value}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
         <div class="title">Số lượng nhân sự giảm</div>
-        <app-combo-line-bar-chart [receivedData]="getallquitedhreachmonthnow" [receivedData2]="getallquitedhreachmonthpast"></app-combo-line-bar-chart>
+        <div class="flex flex-wrap">
+            <app-combo-line-bar-chart [receivedData]="getallquitedhreachmonthnow" [receivedData2]="getallquitedhreachmonthpast" [receivedSize]="sizeChart16"></app-combo-line-bar-chart>
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">T</th>
+                    <th scope="col">{{hrmReportService.nam}}</th>
+                    <th scope="col">{{hrmReportService.nam-1}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of getallquitedhreachmonthnow;let i=index">
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.value}}</td>
+                    <td>{{getallquitedhreachmonthpast[0].series[i].value}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

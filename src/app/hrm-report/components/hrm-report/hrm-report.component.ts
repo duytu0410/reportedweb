@@ -21,27 +21,33 @@ export class HrmReportComponent implements OnInit,OnDestroy {
 
   //dash8
   public getsumwithcategorieseachmonth=JSON.parse(JSON.stringify(multi2));
-  public table8now;
-  public table8past;
+  public sizeChart8=[280,300]
   //dash 9
   public getsumwithcategorieseachdifferent=JSON.parse(JSON.stringify(lineChart));
+  public sizeChart9=[250,300]
   //dash 10
   public getpercentofeachmonth
   //dash 11
   public getaverageeachmonthnow=JSON.parse(JSON.stringify(barChart));
   public getaverageeachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
+  public sizeChart11=[280,300]
   //dash 12
   public getdifferenteachmonth=JSON.parse(JSON.stringify(lineChart));
+  public sizeChart12=[165,300]
   //dash 13
   public getdifferentpercenteachmonth=JSON.parse(JSON.stringify(lineChart));
+  public sizeChart13=[230,300]
   //dash 14
   public getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
+  public sizeChart14=[180,300]
   //dash 15
   public getallnewhreachmonthnow=JSON.parse(JSON.stringify(barChart));
   public getallnewhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
+  public sizeChart15=[230,300]
   //dash 16
   public getallquitedhreachmonthnow=JSON.parse(JSON.stringify(barChart));
   public getallquitedhreachmonthpast=JSON.parse(JSON.stringify(lineChartSeries));
+  public sizeChart16=[230,300]
   constructor(
     public bindingData:BindingDataToRouterService,
     public apiService:ApiService,
@@ -50,11 +56,11 @@ export class HrmReportComponent implements OnInit,OnDestroy {
     ) {
       this.filterForm = this.formBuilder.group({
         "nam": [2019, Validators.required],
-        "thang": [2, Validators.required],
-        "chinhanh":['Hà Nội', Validators.required],
-        "phongban":['Accounting', Validators.required],
+        "thang": [0, Validators.required],
+        "chinhanh":['', Validators.required],
+        "phongban":['', Validators.required],
         "cuahang":['', Validators.required],
-        "manv":['NV01', Validators.required],
+        "manv":['', Validators.required],
         "hangmuc":['Lương cơ bản', Validators.required],
       });
       this.hrmReportService.filter=filter;
@@ -81,7 +87,6 @@ export class HrmReportComponent implements OnInit,OnDestroy {
           this.hrmReportService.filter[0].view=data
         }
       })
-    
   }
   ngOnInit(): void {
    

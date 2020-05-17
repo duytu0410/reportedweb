@@ -78,12 +78,11 @@ section .block select{
     justify-content: center;
    align-items: center;
 }
-.table{
-    width:140px;
-    height: 12rem;
-}
-.table .tr{
-    height: 2rem;
+table{
+    width: fit-content;
+    height: 300px;
+    display: block;
+    overflow-y: scroll;
 }
 
 .line h5{
