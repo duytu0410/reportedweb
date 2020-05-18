@@ -7,6 +7,7 @@
       [labels]="showLabels"
       [gradient]="gradient"
       [doughnut]="doughnut"
+      [customColors]="receivedDataForColor"
       (select)="onSelect($event)"
       [tooltipDisabled]="tooltipDisabled">
       <ng-template #tooltipTemplate let-model="model">

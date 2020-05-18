@@ -1,6 +1,6 @@
 import { Component, OnInit,Input,ViewEncapsulation } from '@angular/core';
 import {single,multi} from '../../service/const/dataFromApi';
-
+import {filter} from './../../service/const/fiter_types_const'
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
@@ -9,6 +9,7 @@ import {single,multi} from '../../service/const/dataFromApi';
 })
 export class PieChartComponent implements OnInit {
   @Input() receivedData
+  @Input() receivedDataForColor
   single: any[];
   multi: any[];
   view: any[] = [400, 230];
@@ -19,6 +20,7 @@ export class PieChartComponent implements OnInit {
   colorScheme = {
     domain: ['#f58730','#FF000B','#FFA8AC','#FF4700','#51FFA9','#51FFFF','#51A9FF','#FFF900','#C133CB','#01FF00','#46A7B8	','#4D2286']
   };
+ 
   // pie
   showLabels = true;
   doughnut = false;

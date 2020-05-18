@@ -18,7 +18,17 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   private messageSubscription: Subscription;
   
   public title:string="Tổng thu nhập"
-
+  //dash 6
+  customColors = [
+    { 
+      name: filter[1].view[0],
+      value: '#f58730'
+    },
+    {
+      name:filter[1].view[filter[1].view.length-1],
+      value:'#44b7e7'
+    }
+  ];
   //dash8
   public getsumwithcategorieseachmonth=JSON.parse(JSON.stringify(multi2));
   public sizeChart8=[180,300]
@@ -70,6 +80,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
       this.apiService.getPhongBan((status,data)=>{
         if(status){
           this.hrmReportService.filter[1].view=data
+          //set màu đầu và cuối cho pie chart
+          this.customColors[0].name=data[0]
+          this.customColors[1].name=data[data.length-1]
+          //hết set màu
         }
       })
       this.apiService.getCuaHang((status,data)=>{
