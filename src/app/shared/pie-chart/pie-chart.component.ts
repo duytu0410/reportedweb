@@ -11,16 +11,16 @@ export class PieChartComponent implements OnInit {
   @Input() receivedData
   single: any[];
   multi: any[];
-  view: any[] = [350, 200];
+  view: any[] = [400, 230];
 
   // options
   showLegend = false;
   explodeSlices=false;
   colorScheme = {
-    domain: ['#f58730', '#44b7e7']
+    domain: ['#f58730','#FF000B','#FFA8AC','#FF4700','#51FFA9','#51FFFF','#51A9FF','#FFF900','#C133CB','#01FF00','#46A7B8	','#4D2286']
   };
   // pie
-  showLabels = false;
+  showLabels = true;
   doughnut = false;
   gradient: boolean = false;
   tooltipDisabled:boolean=false;

@@ -6,11 +6,11 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {HrmReportComponent} from './hrm-report/components/hrm-report/hrm-report.component'
+import {HrmReportComponent} from './hrm-report/components/hrm-report/hrm-report.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
