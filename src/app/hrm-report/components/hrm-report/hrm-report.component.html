@@ -274,7 +274,7 @@
         </div>
     </div>
     
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block2 ">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
         <div class="title">Tăng trưởng so với tháng trước năm {{hrmReportService.nam}}</div>
         <div class="flex-wrap flex ">
             <app-line-chart [receivedData]="getdifferenteachmonth" [receivedSize]="sizeChart12"></app-line-chart>
@@ -295,11 +295,11 @@
         </div>
     </div>
     
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 block2 ">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 block2 ">
         <div class="title">% tăng trưởng so với tháng trước năm {{hrmReportService.nam}}</div>
         <div class="flex flex-wrap">
             <app-line-chart [receivedData]="getdifferentpercenteachmonth" [receivedSize]="sizeChart13"></app-line-chart>
-            <table class="table">
+            <table class="table" style="width:min-content;">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">T</th>
@@ -309,7 +309,7 @@
                 <tbody>
                   <tr *ngFor="let item of getdifferentpercenteachmonth[0].series">
                     <th scope="row">{{item.name}}</th>
-                    <td class="flex flex-wrap"><div *ngIf="0>item.value" class="triangle-down-in-table"></div>{{item.value|positivePipe}}%</td>
+                    <td class="flex flex-wrap" ><div *ngIf="0>item.value" class="triangle-down-in-table"></div>{{item.value|positivePipe}}%</td>
                   </tr>
                 </tbody>
             </table>

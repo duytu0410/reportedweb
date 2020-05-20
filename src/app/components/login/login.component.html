@@ -1,0 +1,42 @@
+<div class="wrapper container-fluid">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 left_block" >
+            <img src="./../../../assets/cuccuc.png" alt="" class="img-fluid">
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 right_block" >
+            <div class="flex mt-auto mb-auto" style="flex-direction: column;width: 20rem;">
+                <div class="login_block">
+                    <div class="content w-80 ml-auto mr-auto">
+                        <div class="title tc">
+                            <h1>MAAC</h1>
+                            <h4>Giải pháp quản trị doanh nghiệp</h4>
+                        </div>
+                        <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" class="tc" style="margin-top:-0.8rem">
+                            <input id=userName type="text" formControlName="userName" class="" required>
+                            <input id=password type="text" formControlName="password" class="" required>
+                            <button type="submit"  [disabled]="!loginForm.valid" class="btn btn-primary">Đăng nhập</button>   
+                        </form>
+                        <div class="flex mt3">
+                            <input type="checkbox" [(ngModel)] = "checkbox" class="center-block mr2 mt1 w1 h1">
+                            <p style="font-family: Arial, Helvetica, sans-serif;margin-top:0.2rem">Giữ đăng nhập</p>
+                        </div>
+                        <a href="" class="mt2">Bạn quên mật khẩu đăng nhập?</a>
+                        <div class="contact flex mt3">
+                            <img src="./../../../assets/phone-02.png" alt="" class="mr3">
+                            <a href=""  >0867680400</a>
+                        </div>
+                        <div class="contact flex mt3">
+                            <img src="./../../../assets/MAIL-01.png" alt="" class="mr3">
+                            <a href=""  >cskh@maac.com</a>
+                        </div>
+                        <div class="contact flex mt3">
+                            <img src="./../../../assets//global-01.png" alt="" class="mr3 mb3">
+                            <a href=""  >www.baocaoquantri.net</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tc mt3">Copyright@2020</div>
+            </div>
+        </div>
+    </div>
+</div>

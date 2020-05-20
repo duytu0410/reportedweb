@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy} from '@angular/core';
 import {BindingDataToRouterService} from './../../../service/binding_data_to_router/binding-data-to-router.service';
 import {Subscription,Subject,Observable} from 'rxjs';
 import {filter,nam,thang,hangmuc} from '../../../service/const/fiter_types_const';
-import {single,multi2,lineChart,barChart,lineChartSeries,bubbleData} from './../../../service/const/dataFromApi'
+import {single,multi2,lineChart,barChart,lineChartSeries} from './../../../service/const/dataFromApi'
 import {ApiService} from './../../../service/api/api.service';
 import {HrmReportService} from './../../service/hrm-report.service';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
@@ -22,16 +22,16 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   customColors = [
     { 
       name: filter[1].view[0],
-      value: '#f58730'
+      value: '#f26a21'
     },
     {
       name:filter[1].view[filter[1].view.length-1],
-      value:'#44b7e7'
+      value:'#33658a'
     }
   ];
   //dash8
   public getsumwithcategorieseachmonth=JSON.parse(JSON.stringify(multi2));
-  public sizeChart8=[180,300]
+  public sizeChart8=[190,300]
   //dash 9
   public getsumwithcategorieseachdifferent=JSON.parse(JSON.stringify(lineChart));
   public sizeChart9=[200,300]
@@ -43,10 +43,10 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   public sizeChart11=[280,300]
   //dash 12
   public getdifferenteachmonth=JSON.parse(JSON.stringify(lineChart));
-  public sizeChart12=[165,300]
+  public sizeChart12=[240,300]
   //dash 13
   public getdifferentpercenteachmonth=JSON.parse(JSON.stringify(lineChart));
-  public sizeChart13=[230,300]
+  public sizeChart13=[160,300]
   //dash 14
   public getcountedhreachmonth=JSON.parse(JSON.stringify(multi2))
   public sizeChart14=[260,300]
@@ -166,8 +166,8 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   
   }
   ngOnDestroy(){
-    this.subscription.unsubscribe();
-    this.messageSubscription.unsubscribe();
+    // this.subscription.unsubscribe();
+    // this.messageSubscription.unsubscribe();
   }
   async handleDash567(filter){
       this.apiService.getSumWithCategoriesInPb(filter,(status,data)=>{
