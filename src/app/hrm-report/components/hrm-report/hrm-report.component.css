@@ -84,17 +84,22 @@ table{
     display: block;
     overflow-y: scroll;
 }
-
+table thead tr th:nth-child(2){
+    color:#f58730 
+}
+table thead tr th:nth-child(3){
+    color:#44b7e7
+}
+table tbody tr td:nth-child(2){
+    color:#f58730  ;
+}
+table tbody tr td:nth-child(3){
+    color: #44b7e7;
+}
 .line h5{
     color: rgb(2, 2, 2);
 }
 
-.stacked-chart{
-    top:3.2rem;
-    left:calc(20%-15px);
-    position:absolute;
-    z-index: -1;
-}
 .title{
     font-size: 0.8rem;
  color: rgb(0, 0, 0);
@@ -128,9 +133,18 @@ table{
 .triangle-down-in-table {
 	width: 0;
 	height: 0;
-	border-left: 3px solid transparent;
-	border-right: 3px solid transparent;
-    border-top: 6px solid #070707;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+    border-top: 8px solid #f58730;
+    margin-top: 0.4rem;
+    margin-right: 0.2rem;
+}
+.triangle-up-in-table {
+	width: 0;
+	height: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+    border-bottom: 8px solid #44b7e7;
     margin-top: 0.4rem;
     margin-right: 0.2rem;
 }

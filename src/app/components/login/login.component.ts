@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
   }
   onLogin(data){
     console.log(data)
+    if(data.userName=="admin"&&data.password=="admin"){
+      this.navigate('hrm')
+    }
   }
 
   ngOnInit(): void {

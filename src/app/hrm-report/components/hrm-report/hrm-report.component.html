@@ -237,7 +237,8 @@
                 <tbody>
                 <tr *ngFor="let item of getsumwithcategorieseachdifferent[0].series">
                     <th scope="row">{{item.name}}</th>
-                    <td class="flex flex-wrap"><div *ngIf="0>item.value" class="triangle-down-in-table"></div>{{item.value| currency:'VND'|positivePipe}}</td>
+                    <td class="flex flex-wrap" style="color:#f58730" *ngIf="0>item.value"><div  class="triangle-down-in-table"></div>{{item.value| currency:'VND'|positivePipe}}</td>
+                    <td class="flex flex-wrap" style="color: #44b7e7;" *ngIf="item.value>=0"><div class="triangle-up-in-table"></div>{{item.value| currency:'VND'|positivePipe}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -288,8 +289,8 @@
                 <tbody>
                 <tr *ngFor="let item of getdifferenteachmonth[0].series">
                     <th scope="row">{{item.name}}</th>
-                    <td class="flex flex-wrap"><div *ngIf="0>item.value" class="triangle-down-in-table"></div>{{item.value| positivePipe| currency:'VND'}}</td>
-                </tr>
+                    <td class="flex flex-wrap" style="color:#f58730" *ngIf="0>item.value"><div  class="triangle-down-in-table"></div>{{item.value| positivePipe | currency:'VND'}}</td>
+                    <td class="flex flex-wrap" style="color: #44b7e7;" *ngIf="item.value>=0"><div class="triangle-up-in-table"></div>{{item.value| positivePipe | currency:'VND'}}</td>                </tr>
                 </tbody>
             </table>
         </div>
@@ -309,7 +310,8 @@
                 <tbody>
                   <tr *ngFor="let item of getdifferentpercenteachmonth[0].series">
                     <th scope="row">{{item.name}}</th>
-                    <td class="flex flex-wrap" ><div *ngIf="0>item.value" class="triangle-down-in-table"></div>{{item.value|positivePipe}}%</td>
+                    <td class="flex flex-wrap" style="color:#f58730" *ngIf="0>item.value"><div  class="triangle-down-in-table"></div>{{item.value|positivePipe}}%</td>
+                    <td class="flex flex-wrap" style="color: #44b7e7;" *ngIf="item.value>=0"><div class="triangle-up-in-table"></div>{{item.value|positivePipe}}%</td>
                   </tr>
                 </tbody>
             </table>

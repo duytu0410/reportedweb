@@ -31,7 +31,7 @@ export class HrmReportComponent implements OnInit,OnDestroy {
   ];
   //dash8
   public getsumwithcategorieseachmonth=JSON.parse(JSON.stringify(multi2));
-  public sizeChart8=[190,300]
+  public sizeChart8=[240,300]
   //dash 9
   public getsumwithcategorieseachdifferent=JSON.parse(JSON.stringify(lineChart));
   public sizeChart9=[200,300]
